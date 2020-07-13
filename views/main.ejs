@@ -1,11 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<p>Hi There Steve</p>
 
+<script src= "/javascripts/main.js"></script>
+<link rel="stylesheet" href="./stylesheets/main.css">
+
+<html>
+<head>
+    <meta charset = "UTF-8">
+    <title>   Wiz Show Control  </title>
+</head>
+
+<body>
+<div id ="topline">
+
+</div>
+<div id="header">
+    <div id = 'copyright'>
+        V 0.1 &nbsp (C) 2020 Wiz Computing
+    </div>
+
+
+    <div id="name">
+        <img id="logo" src = "/images/logo.png" >
+        <p id = projectName>  Wiz Theater Control </p>
+    </div>
+
+    <div id = "bottomline">
+
+    </div>
+</div>
+<!--  This is the main page   -->
+<label for="jvc">Choose a Command:</label>
+<select name="jvc" id="jvc">
+    <option value="[0x3f,0x89,0x01,0x50,0x57,0x0a]">ON</option>
+    <option value="saab">OFF</option>
+    <option value="opel">Power Status</option>
+    <option value="audi">Other</option>
+</select>
+
+<input type="button" value="JVC GO">
+
+<label for="denon">Choose a Command:</label>
+<select name="denon" id="denon">
+    <option value="[0x3f,0x89,0x01,0x50,0x57,0x0a]">ON</option>
+    <option value="saab">OFF</option>
+    <option value="opel">Power Status</option>
+    <option value="audi">Other</option>
+</select>
+
+<input type="button" value="Denon GO">
+
+<label for="oppo">Choose a Command:</label>
+<select name="oppo" id="oppo">
+    <option value="[0x3f,0x89,0x01,0x50,0x57,0x0a]">ON</option>
+    <option value="saab">OFF</option>
+    <option value="opel">Power Status</option>
+    <option value="audi">Other</option>
+</select>
+
+<input type="button" value="OPPO GO">
 </body>
 </html>
