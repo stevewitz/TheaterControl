@@ -1,8 +1,11 @@
 var express = require('express');
 var path = require('path');
 var ejs = require('ejs');
-
+const WebSocket = require('ws');
+var http = require('http');
 var app = express();
+
+
 app.use(express.static('public')); // set up the public directory as web accessible
 app.use(function (err, req, res, next) {
   console.error(err.stack);
@@ -20,12 +23,28 @@ app.get('/curtain', function (req, res) {
   res.render('curtain.ejs',{ });
 })
 
-var http = require('http');
 
-var webserver = app.listen(9111, function () {
+
+var webserver = http.createServer(app).listen(9999, function () {
   console.log('Webserver listening at http://' + webserver.address().address + ':' + webserver.address().port);
+
+});
+const wss = new WebSocket.Server({webserver});
+
+wss.on("connection",ws => {
+  console.log("client has connected");
+
+  ws.on("message", data =>{
+    console.log("Webpage has sent data: " + data);
+  })
+
+  ws.send("Server responds");
+
+  ws.on("close", ws =>{
+    console.log("Webpage has disconnected!");
+
+  });
 
 });
 
 
-module.exports = app;
