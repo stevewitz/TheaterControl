@@ -7,7 +7,7 @@ ws.addEventListener("open",() => {
     ws.send("I'm here at main page");
 
 });
-ws.addEventListener("message",(data) => {
+ws.addEventListener("message",({data}) => {
     console.log(data);
 
 });
