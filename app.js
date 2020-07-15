@@ -29,7 +29,7 @@ var webserver = http.createServer(app).listen({port:9999}, function () {
   console.log('Webserver listening at http://' + webserver.address().address + ':' + webserver.address().port);
 
 });
-const wss = new WebSocket.Server({port:8082});
+const wss = new WebSocket.Server({server:webserver});
 
 wss.on("connection",ws => {
   console.log("client has connected");
