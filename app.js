@@ -6,6 +6,9 @@ var http = require('http');
 var app = express();
 var net = require('net');
 
+const bodyParser = require('body-parser');
+const urlencodedParser = bodyParser.text({extended: false});
+
 app.use(express.static('public')); // set up the public directory as web accessible
 app.use(function (err, req, res, next) {
   console.error(err.stack);
@@ -23,8 +26,8 @@ app.get('/curtain', function (req, res) {
   res.render('curtain.ejs',{ });
 })
 
-app.post('/',  (req, res) => {
-  console.log(":this is the text: " + req.body);
+app.post('/', urlencodedParser, (req, res) => {
+  console.log("this is the text: " + req);
 });
 
 
