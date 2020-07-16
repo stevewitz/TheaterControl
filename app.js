@@ -4,7 +4,7 @@ var ejs = require('ejs');
 const WebSocket = require('ws');
 var http = require('http');
 var app = express();
-
+var net = require('net');
 
 app.use(express.static('public')); // set up the public directory as web accessible
 app.use(function (err, req, res, next) {
@@ -23,6 +23,9 @@ app.get('/curtain', function (req, res) {
   res.render('curtain.ejs',{ });
 })
 
+app.post('/',  (req, res) => {
+  console.log(":this is the text: " + req.body);
+});
 
 
 var webserver = http.createServer(app).listen({port:9999}, function () {
@@ -47,3 +50,20 @@ wss.on("connection",ws => {
 
 });
 
+var server = net.createServer(function(connection) {
+  console.log('client connected');
+
+  connection.on('end', function() {
+    console.log('client disconnected');
+  });
+  connection.on('data', function(data) {
+    console.log(data.toString());
+    connection.end();
+  });
+  connection.write('Hello World!\r\n');
+  connection.pipe(connection);
+});
+
+server.listen(8888, function() {
+  console.log('server is listening');
+});
