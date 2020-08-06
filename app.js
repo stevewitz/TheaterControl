@@ -27,7 +27,7 @@ app.get('/curtain', function (req, res) {
 })
 
 app.post('/', urlencodedParser, (req, res) => {
-  console.log("this is the text: " + req);
+  console.log("this is the text: " + req.body);
 });
 
 
