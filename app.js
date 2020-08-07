@@ -13,19 +13,11 @@ var os = require('os');
 const bodyParser = require('body-parser');
 const urlencodedParser = bodyParser.text({extended: false});
 //setup serialport
-if(os.platform()=='win32'){
-  var port = new SerialPort('com3', {
-    baudRate: 9600
-  })
-  console.log("serial port opened windows");
-}
-else if(os.platform()=='linux'){
-  var port = new SerialPort('/dev/ttyACM0', {
-    baudRate: 9600
-  })
-  console.log("serial port opened linux");
-}
-//listen on serialport
+const port = new SerialPort((os.platform() == 'linux') ?'/dev/ttyACM0':'com3', {
+  baudRate: 9600
+})
+
+//listen on serialport via parser
 port.pipe(parser);
 port.on('open', () => {
   console.log('Port is open!')
