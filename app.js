@@ -5,9 +5,25 @@ const WebSocket = require('ws');
 var http = require('http');
 var app = express();
 var net = require('net');
+var serialPort = require('serialport');
+var os = require('os');
 
 const bodyParser = require('body-parser');
 const urlencodedParser = bodyParser.text({extended: false});
+//setup serialport
+if(os.platform()=='win32'){
+  const port = new SerialPort('com4', {
+    baudRate: 9600
+  })
+  console.log("serial port opened windows");
+}
+else if(os.platform()=='linux'){
+  const port = new SerialPort('/dev/tty/ACM0', {
+    baudRate: 9600
+  })
+  console.log("serial port opened linux");
+}
+
 
 app.use(express.static('public')); // set up the public directory as web accessible
 app.use(function (err, req, res, next) {
