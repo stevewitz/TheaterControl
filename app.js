@@ -6,30 +6,33 @@ var http = require('http');
 var app = express();
 var net = require('net');
 var SerialPort = require('serialport');
+const Readline = SerialPort.parsers.Readline;
+const parser = new Readline({delimiter: '\r\n'});
 var os = require('os');
 
 const bodyParser = require('body-parser');
 const urlencodedParser = bodyParser.text({extended: false});
 //setup serialport
 if(os.platform()=='win32'){
-  const port = new SerialPort('com3', {
+  var port = new SerialPort('com3', {
     baudRate: 9600
   })
   console.log("serial port opened windows");
 }
 else if(os.platform()=='linux'){
-  const port = new SerialPort('/dev/ttyACM0', {
+  var port = new SerialPort('/dev/ttyACM0', {
     baudRate: 9600
   })
   console.log("serial port opened linux");
 }
 //listen on serialport
+port.pipe(parser);
 port.on('open', () => {
   console.log('Port is open!')
 })
-
-port.on('data', function (data) {
-  console.log('Data:', data)
+//all incoming data comes in here
+parser.on('data', function (data) {
+  console.log('Data:', data.toString())
 })
 port.write("1");
 app.use(express.static('public')); // set up the public directory as web accessible
