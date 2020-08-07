@@ -5,7 +5,7 @@ const WebSocket = require('ws');
 var http = require('http');
 var app = express();
 var net = require('net');
-var serialPort = require('serialport');
+var SerialPort = require('serialport');
 var os = require('os');
 
 const bodyParser = require('body-parser');
