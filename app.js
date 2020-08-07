@@ -18,7 +18,7 @@ if(os.platform()=='win32'){
   console.log("serial port opened windows");
 }
 else if(os.platform()=='linux'){
-  const port = new SerialPort('/dev/tty/ACM0', {
+  const port = new SerialPort('/dev/ttyACM0', {
     baudRate: 9600
   })
   console.log("serial port opened linux");
