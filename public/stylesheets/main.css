@@ -47,3 +47,16 @@
 body{
   height: 90%;
 }
+
+.mainDivs{
+  display:inline-block;
+  border-style: groove;
+  width:400px;
+  height:110px;
+}
+
+#theater{
+  width:95%;
+  height:200px;
+  border:3px solid;
+}

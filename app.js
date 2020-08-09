@@ -1,21 +1,29 @@
-var express = require('express');
-var path = require('path');
-var ejs = require('ejs');
+let express = require('express');
+let path = require('path');
+let ejs = require('ejs');
 const WebSocket = require('ws');
-var http = require('http');
-var app = express();
-var net = require('net');
-var SerialPort = require('serialport');
+let http = require('http');
+let app = express();
+let net = require('net');
+
+let SerialPort = require('serialport');
+let port;
 const Readline = SerialPort.parsers.Readline;
 const parser = new Readline({delimiter: '\r\n'});
-var os = require('os');
-
+let os = require('os');
+let systemState={};
 const bodyParser = require('body-parser');
 const urlencodedParser = bodyParser.text({extended: false});
 //setup serialport
-const port = new SerialPort((os.platform() == 'linux') ?'/dev/ttyACM0':'com3', {
-  baudRate: 9600
-})
+
+try {
+    port = new SerialPort((os.platform() == 'linux') ? '/dev/ttyACM0' : 'com3', {
+    baudRate: 9600
+  })
+}
+catch(e){
+  console.log("error opening serial port");
+}
 
 //listen on serialport via parser
 port.pipe(parser);
@@ -60,6 +68,10 @@ wss.on("connection",ws => {
 
   ws.on("message", data =>{
     console.log("Webpage has sent data: " + data);
+    data= JSON.parse(data);
+    if(data.type == "jvc" && data.value == "jvc Clicked"){
+      ws.send("OK");
+    }
   })
 
   ws.send("Server responds now");
