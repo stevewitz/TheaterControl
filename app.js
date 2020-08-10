@@ -5,7 +5,9 @@ const WebSocket = require('ws');
 let http = require('http');
 let app = express();
 let net = require('net');
-
+const clients = new Set()
+//clients = [];
+let clientCount=0;
 let SerialPort = require('serialport');
 let port;
 const Readline = SerialPort.parsers.Readline;
@@ -63,25 +65,37 @@ var webserver = http.createServer(app).listen({port:9999}, function () {
 });
 const wss = new WebSocket.Server({server:webserver});
 
+/////////////////////////////////////////////////////////
 wss.on("connection",ws => {
+  clientCount ++;
+  clients.add(ws);
+ // clients[ws] = ws;
   console.log("client has connected");
-
+  console.log("number of connections: " + clients.size);
   ws.on("message", data =>{
     console.log("Webpage has sent data: " + data);
+
+
     data= JSON.parse(data);
     if(data.type == "jvc" && data.value == "jvc Clicked"){
       ws.send("OK");
     }
   })
 
-  ws.send("Server responds now");
+  for(let client of clients) {
+    client.send("Server responds now");
+  }
 
-  ws.on("close", ws =>{
-    console.log("Webpage has disconnected!");
+  ws.on("close", function(){
+   // delete clients[ws];
+    clients.delete(ws);
+    console.log("Webpage has disconnected! Clients still connected: " + clients.size);
 
   });
 
 });
+
+//////////////////////////////////////
 
 var server = net.createServer(function(connection) {
   console.log('client connected');
