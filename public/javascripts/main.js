@@ -24,3 +24,12 @@ function jvcClick(){
     datapacket.value = "jvc Clicked"
     ws.send(JSON.stringify(datapacket));
 }
+
+function curtainButton(value){
+    console.log("Curtain button: "+ value + " was pressed");
+
+}
+function lightsButton(value){
+    console.log("Lights button: "+ value + " was pressed");
+
+}
