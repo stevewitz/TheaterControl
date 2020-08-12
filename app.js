@@ -120,9 +120,10 @@ wss.on("connection",ws => {
 
   for(let client of clients) {  //send theaterState to all clients
     if(client.readyState === 1) {
-      let systemInfo={};
-      systemInfo.type = "state";
-      systemInfo.value = theaterState;
+      let systemInfo={
+         type:state,
+         value: theaterState};
+     
       client.send(JSON.stringify(systemInfo));
       //client.send("Server responds now");
     }
