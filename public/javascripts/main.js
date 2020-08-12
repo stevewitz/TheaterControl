@@ -11,19 +11,36 @@ ws.addEventListener("open", () => {
 });
 
 
-ws.addEventListener("message", ({data}) => {
+ws.addEventListener("message", (data) => {
     console.log(data);
+
+    data  = JSON.parse(data.data);
+    if (data.type == "state") {
+        for(let device in data.value){
+            if(data.value.hasOwnProperty(device)){
+
+                if(data.value[device] == 1){
+                    document.getElementById(device).style.backgroundColor = "red";
+                }
+                else{
+                    document.getElementById(device).style.backgroundColor = "blue";
+                }
+                console.log("Device: " + device + " Value: " + data.value[device]);
+            }
+        }
+
+
+    }
+    let x = 1;
+    x=x++;
+
     if(data=="OK"){
         document.getElementById("jvc").style.backgroundColor= "red";
     }
 
 });
 
-function jvcClick(){
-    datapacket.type = "jvc";
-    datapacket.value = "jvc Clicked"
-    ws.send(JSON.stringify(datapacket));
-}
+
 
 function curtainButton(value){
     console.log("Curtain button: "+ value + " was pressed");
@@ -31,5 +48,19 @@ function curtainButton(value){
 }
 function lightsButton(value){
     console.log("Lights button: "+ value + " was pressed");
+
+}
+function oppoButton(value){
+    console.log("Oppo button: "+ value + " was pressed");
+
+}
+
+function jvcButton(value){
+    console.log("Jvc button: "+ value + " was pressed");
+
+}
+
+function denonButton(value){
+    console.log("denon button: "+ value + " was pressed");
 
 }

@@ -31,30 +31,58 @@
     <!--  This is the main page   -->
 
     <div id= "main">
-        <div class="mainDivs" id = "denon">
-        <h2>This is Denon</h2>
-            <button id="denonPower">Power</button><br>
-            <button id-denonDVD>DVD</button>
-            <button id-denonBluRay>BluRay</button>
-
+        <div id = "theater">
+            <h1>This is the theater</h1>
         </div>
+
+
+        <div class="mainDivs" id = "denon">
+            <div class = 'heading'>This is Denon</div>
+            <button class = 'denon' id="denonPowerOn" onClick = "denonButton('denonPowerOn')">Power ON</button>
+            <button class = 'denon' id="denonPowerOff" onClick = "denonButton('denonPowerOff')">Power OFF</button>
+            <br>
+            <button class = 'curtain' id="denonInputBluray" onClick = "denonButton('denonInputBluray')">Blu-Ray</button>
+            <button class = 'curtain' id="denonInputDVD" onClick = "denonButton('denonInputDVD')">DVD</button>
+            <button class = 'curtain' id="denonZone3Off" onClick = "denonButton('denonZone3Off')">Zone 3 OFF</button>
+            <button class = 'curtain' id="denonZone2Off" onClick = "denonButton('denonZone2Off')">Zone 2 OFF</button>
+            <br>
+            <button class = 'denon' id="denonVolumeUp" onClick = "denonButton('denonVolumeUp')">Volume +</button>
+            <button class = 'denon' id="denonVolumeDown" onClick = "denonButton('denonVolumeDown')">Volume -</button>
+        </div>
+
+
         <div class="mainDivs" id = "oppo">
-            <h2>This is oppo</h2>
-
-
+            <div class = 'heading'>This is oppo</div>
+            <button class = 'oppo' id="oppoPowerOn" onClick = "oppoButton('oppoPowerOn')">Power ON</button>
+            <button class = 'oppo' id="oppoPowerOff" onClick = "oppoButton('oppoPowerOff')">Power OFF</button>
+            <br>
+            <button class = 'curtain' id="oppoInputHdmi" onClick = "oppoButton('oppoInputHdmi')">HDMI</button>
+            <button class = 'curtain' id="oppoInputBluray" onClick = "oppoButton('oppoInputBluray')">Blu-Ray</button>
         </div>
         <div class="mainDivs" id = "jvc">
-
-
-
-            <h2>This is jvc</h2>
+            <div class = 'heading'>This is jvc</div>
+            <button class = 'jvc' id="jvcPowerOn" onClick = "jvcButton('jvcPowerOn')">Power ON</button>
+            <button class = 'jvc' id="jvcPowerOff" onClick = "jvcButton('jvcPowerOff')">Power OFF</button>
+            <br><br>
+            <button class = 'curtain' id="jvcLensMemory1" onClick = "jvcButton('jvcLensMemory1')">Wide Screen</button>
+            <button class = 'curtain' id="jvcLensMemory2" onClick = "jvcButton('jvcLensMemory2')">Normal</button>
+            <button class = 'curtain' id="jvcLensMemory3" onClick = "jvcButton('jvcLensMemory3')">Other 1</button>
+            <button class = 'curtain' id="jvcLensMemory4" onClick = "jvcButton('jvcLensMemory4')">Other 2</button>
+            <br>
+            <button class = 'curtain' id="jvcPictureMode1" onClick = "jvcButton('jvcPictureMode1')">Standard</button>
+            <button class = 'curtain' id="jvcPictureMode2" onClick = "jvcButton('jvcPictureMode2')">HDR</button>
+            <button class = 'curtain' id="jvcPictureMode3" onClick = "jvcButton('jvcPictureMode3')">HDR Other</button>
+            <br>
+            <button class = 'curtain' id="jvcCMD1" onClick = "jvcButton('jvcCMD1')">CMD 1</button>
+            <button class = 'curtain' id="jvcCMD2" onClick = "jvcButton('jvcCMD2')">CMD 2</button>
+            <button class = 'curtain' id="jvcCMD3" onClick = "jvcButton('jvcCMD3')">CMD 3</button>
         </div>
         <div class="mainDivs" id = "curtain">
             <div class = 'heading'> Curtain</div>
             <button class = 'curtain' id="curtainStop" onClick = "curtainButton('curtainStop')">STOP</button>
             <button class = 'curtain' id="curtain235" onClick = "curtainButton('curtain235')">2.35</button>
-            <button class = 'curtain' id="curtain16x9" onClick = "curtainButton('curtain16x9')">16x9</button>
-            <button class = 'curtain' id="curtain4x3" onClick = "curtainButton('curtain4x3')">4x3</button>
+            <button class = 'curtain' id="curtain16_9" onClick = "curtainButton('curtain16_9')">16x9</button>
+            <button class = 'curtain' id="curtain4_3" onClick = "curtainButton('curtain4_3')">4x3</button>
             <button class = 'curtain' id="curtainClose" onClick = "curtainButton('curtainClose')">CLOSE</button>
         </div>
         <div class="mainDivs" id = "lights">
@@ -64,45 +92,9 @@
             <button class = 'curtain' id="lightsPause" onClick = "lightsButton('lightsPause')">PAUSE</button>
 
         </div>
-        <div id = "theater">
-            <h1>This is the theater</h1>
-        </div>
 
     </div>
 
 
-
-
-
-
-    <label for="jvc">Choose a Command:</label>
-    <select name="jvc" id="jvc1">
-        <option value="[0x3f,0x89,0x01,0x50,0x57,0x0a]">ON</option>
-        <option value="saab">OFF</option>
-        <option value="opel">Power Status</option>
-        <option value="audi">Other</option>
-    </select>
-
-    <button id="jvc" onclick = "jvcClick()" >JVC GO</button>
-
-    <label for="denon">Choose a Command:</label>
-    <select name="denon" id="denon">
-        <option value="[0x3f,0x89,0x01,0x50,0x57,0x0a]">ON</option>
-        <option value="saab">OFF</option>
-        <option value="opel">Power Status</option>
-        <option value="audi">Other</option>
-    </select>
-
-    <input type="button" value="Denon GO">
-
-    <label for="oppo">Choose a Command:</label>
-    <select name="oppo" id="oppo">
-        <option value="[0x3f,0x89,0x01,0x50,0x57,0x0a]">ON</option>
-        <option value="saab">OFF</option>
-        <option value="opel">Power Status</option>
-        <option value="audi">Other</option>
-    </select>
-
-    <input type="button" value="OPPO GO">
 </body>
 </html>

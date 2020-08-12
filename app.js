@@ -6,18 +6,53 @@ let http = require('http');
 let app = express();
 let net = require('net');
 const clients = new Set()
-//clients = [];
-let clientCount=0;
+
 let SerialPort = require('serialport');
 let port;
 const Readline = SerialPort.parsers.Readline;
 const parser = new Readline({delimiter: '\r\n'});
 let os = require('os');
-let systemState={};
+
 const bodyParser = require('body-parser');
 const urlencodedParser = bodyParser.text({extended: false});
-//setup serialport
 
+let theaterState={
+  curtainStop:0,
+  curtain235:0,
+  curtain16_9:0,
+  curtain4_3:0,
+  curtainClose:1,
+  lightsOff:1,
+  lightsOn:0,
+  lightsPause:0,
+  jvcPowerOn:0,
+  jvcPowerOff:1,
+  jvcLensMemory1:0,
+  jvcLensMemory2:0,
+  jvcLensMemory3:0,
+  jvcLensMemory4:0,
+  jvcPictureMode1:0,
+  jvcPictureMode2:0,
+  jvcPictureMode3:0,
+  jvcCMD1:0,
+  jvcCMD2:0,
+  jvcCMD3:0,
+  oppoPowerOn:0,
+  oppoPowerOff:1,
+  oppoInputHdmi:0,
+  oppoInputBluray:0,
+  denonPowerOn:0,
+  denonPowerOff:1,
+  denonInputBluray:0,
+  denonInputDVD:0,
+  denonZone3Off:0,
+  denonZone2Off:0,
+  denonVolumeUp:0,
+  denonVolumeDown:0
+};
+
+
+//setup serialport
 try {
     port = new SerialPort((os.platform() == 'linux') ? '/dev/ttyACM0' : 'com3', {
     baudRate: 9600
@@ -67,25 +102,32 @@ const wss = new WebSocket.Server({server:webserver});
 
 /////////////////////////////////////////////////////////
 wss.on("connection",ws => {
-  clientCount ++;
   clients.add(ws);
- // clients[ws] = ws;
+
   console.log("client has connected");
   console.log("number of connections: " + clients.size);
+  ////////////////////////////////
   ws.on("message", data =>{
     console.log("Webpage has sent data: " + data);
 
-
     data= JSON.parse(data);
     if(data.type == "jvc" && data.value == "jvc Clicked"){
-      ws.send("OK");
+    //  ws.send("OK");
     }
   })
 
-  for(let client of clients) {
-    client.send("Server responds now");
-  }
+//send to all clients ////////////////////
 
+  for(let client of clients) {  //send theaterState to all clients
+    if(client.readyState === 1) {
+      let systemInfo={};
+      systemInfo.type = "state";
+      systemInfo.value = theaterState;
+      client.send(JSON.stringify(systemInfo));
+      //client.send("Server responds now");
+    }
+  }
+/////////////////////////////////////
   ws.on("close", function(){
    // delete clients[ws];
     clients.delete(ws);

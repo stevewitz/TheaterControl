@@ -100,8 +100,15 @@ if (recreateDevice){
             {   name:'Zone 3 OFF',
                 code:'Z3OFF',
                 sendto:"Denon"
+            },
+            {   name:'Volume +',
+                code:'MVUP',
+                sendto:"Denon"
+            },
+            {   name:'Volume -',
+                code:'MVDOWN',
+                sendto:"Denon"
             }
-
 
 
         ],
