@@ -20,10 +20,10 @@ ws.addEventListener("message", (data) => {
             if(data.value.hasOwnProperty(device)){
 
                 if(data.value[device] == 1){
-                    document.getElementById(device).style.backgroundColor = "red";
+                    document.getElementById(device).style.backgroundColor = "#ea9191";
                 }
                 else{
-                    document.getElementById(device).style.backgroundColor = "blue";
+                    document.getElementById(device).style.backgroundColor = "skyblue";
                 }
                 console.log("Device: " + device + " Value: " + data.value[device]);
             }

@@ -67,9 +67,9 @@ body{
 .curtain{
   margin-right: -5px;
   font-size:1.2em;
-  background-color: #4CAF50;
-  color:white;
-  border: 1px solid green;
+  background-color: skyblue;
+  color:#524343;
+  border: 1px solid dodgerblue;
   height:50px;
 }
 
