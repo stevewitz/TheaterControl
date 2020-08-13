@@ -25,25 +25,22 @@ let theaterState={
   lightsOff:1,
   lightsOn:0,
   lightsPause:0,
-  jvcPowerOn:0,
-  jvcPowerOff:1,
+  jvcPower:0,
   jvcLensMemory1:0,
-  jvcLensMemory2:0,
+  jvcLensMemory2:1,
   jvcLensMemory3:0,
   jvcLensMemory4:0,
-  jvcPictureMode1:0,
+  jvcPictureMode1:1,
   jvcPictureMode2:0,
   jvcPictureMode3:0,
-  jvcCMD1:0,
+  jvcCMD1:1,
   jvcCMD2:0,
   jvcCMD3:0,
-  oppoPowerOn:0,
-  oppoPowerOff:1,
+  oppoPower:0,
   oppoInputHdmi:0,
   oppoInputBluray:0,
-  denonPowerOn:0,
-  denonPowerOff:1,
-  denonInputBluray:0,
+  denonPower:0,
+  denonInputBluray:1,
   denonInputDVD:0,
   denonZone3Off:0,
   denonZone2Off:0,
@@ -69,6 +66,8 @@ port.on('open', () => {
 })
 //all incoming data comes in here
 parser.on('data', function (data) {
+
+  
   console.log('Data:', data.toString())
 })
 port.write("1");
@@ -111,21 +110,41 @@ wss.on("connection",ws => {
     console.log("Webpage has sent data: " + data);
 
     data= JSON.parse(data);
-    if(data.type == "jvc" && data.value == "jvc Clicked"){
-    //  ws.send("OK");
+    switch(data.type){
+      case "state":{
+        theaterState=data.value;
+      }
+      break;
+
+      case "buttonPress":{ // a button has been pressed by the user
+        console.log("the button that was pressed was: " +data.value);
+        processButtonPress(data.value);
+        for(let client of clients) {  //send theaterState to all clients
+          let systemInfo={
+            type:"state",
+            value: theaterState
+          };
+          if(client.readyState === 1) {
+            client.send(JSON.stringify(systemInfo));
+          }
+        }
+
+      }
+      break;
     }
+
+
   })
 
 //send to all clients ////////////////////
 
   for(let client of clients) {  //send theaterState to all clients
+    let systemInfo={
+      type:"state",
+      value: theaterState
+    };
     if(client.readyState === 1) {
-      let systemInfo={
-         type:state,
-         value: theaterState};
-     
       client.send(JSON.stringify(systemInfo));
-      //client.send("Server responds now");
     }
   }
 /////////////////////////////////////
@@ -157,3 +176,109 @@ var server = net.createServer(function(connection) {
 server.listen(8888, function() {
   console.log('server is listening');
 });
+
+function processButtonPress(button) {
+  console.log("processing command: " + button);
+  switch (button) {
+    case "curtainStop":
+      port.write("5");
+    break;
+    case "curtain235":
+      port.write("4");
+      break;
+    case "curtain16_9":
+      port.write("3");
+      break;
+    case "curtain4_3":
+      port.write("2");
+      break;
+    case "curtainClose":
+      port.write("1");
+      break;
+    case "lightsOff":
+      port.write("8");
+      break;
+    case "lightsOn":
+      port.write("9");
+      break;
+    case "lightsPause":
+      port.write("0");
+      break;
+    case "jvcPowerOn":
+
+      break;
+    case "jvcPowerOff":
+
+      break;
+    case "jvcLensMemory1":
+
+      break;
+    case "jvcLensMemory2":
+
+      break;
+    case "jvcLensMemory3":
+
+      break;
+    case "jvcLensMemory4":
+
+      break;
+    case "jvcPictureMode1":
+
+      break;
+    case "jvcPictureMode2":
+
+      break;
+    case "jvcPictureMode3":
+
+      break;
+    case "jvcCMD1":
+
+      break;
+    case "jvcCMD2":
+
+      break;
+    case "jvcCMD3":
+
+      break;
+    case "oppoPowerOn":
+
+      break;
+    case "oppoPowerOff":
+
+      break;
+    case "oppoInputHdmi":
+
+      break;
+    case "oppoInputBluray":
+
+      break;
+    case "denonPowerOn":
+
+      break;
+    case "denonPowerOff":
+
+      break;
+    case "denonInputBluray":
+
+      break;
+    case "denonInputDVD":
+
+      break;
+    case "denonZone3Off":
+
+      break;
+    case "denonZone2Off":
+
+      break;
+    case "denonVolumeUp":
+
+      break;
+    case "denonVolumeDown":
+
+      break;
+
+  }
+
+}
+
+

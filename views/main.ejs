@@ -38,58 +38,57 @@
 
         <div class="mainDivs" id = "denon">
             <div class = 'heading'>This is Denon</div>
-            <button class = 'denon' id="denonPowerOn" onClick = "denonButton('denonPowerOn')">Power ON</button>
-            <button class = 'denon' id="denonPowerOff" onClick = "denonButton('denonPowerOff')">Power OFF</button>
+            <button class = 'denon device' id="denonPower" onClick = "denonButton('denonPower')">Power</button>
             <br>
-            <button class = 'curtain' id="denonInputBluray" onClick = "denonButton('denonInputBluray')">Blu-Ray</button>
-            <button class = 'curtain' id="denonInputDVD" onClick = "denonButton('denonInputDVD')">DVD</button>
-            <button class = 'curtain' id="denonZone3Off" onClick = "denonButton('denonZone3Off')">Zone 3 OFF</button>
-            <button class = 'curtain' id="denonZone2Off" onClick = "denonButton('denonZone2Off')">Zone 2 OFF</button>
+            <button class = 'denonInput  buttonGroup' id="denonInputBluray" name = "denoninputGroup" onClick = "denonButton('denonInputBluray')">Blu-Ray</button>
+            <button class = 'denonInput buttonGroup' id="denonInputDVD" name = "denoninputGroup" onClick = "denonButton('denonInputDVD')">DVD</button>
             <br>
-            <button class = 'denon' id="denonVolumeUp" onClick = "denonButton('denonVolumeUp')">Volume +</button>
-            <button class = 'denon' id="denonVolumeDown" onClick = "denonButton('denonVolumeDown')">Volume -</button>
+            <button class = 'denon  device  ' id="denonZone3Off" onClick = "denonButton('denonZone3Off')">Zone 3 OFF</button>
+            <button class = 'denon  device  ' id="denonZone2Off" onClick = "denonButton('denonZone2Off')">Zone 2 OFF</button>
+            <br>
+            <button class = 'denon   volume' id="denonVolumeDown" onClick = "denonButton('denonVolumeDown')">Volume -</button>
+            <button class = 'denon   volume' id="denonVolumeUp" onClick = "denonButton('denonVolumeUp')">Volume +</button>
+
         </div>
 
 
         <div class="mainDivs" id = "oppo">
             <div class = 'heading'>This is oppo</div>
-            <button class = 'oppo' id="oppoPowerOn" onClick = "oppoButton('oppoPowerOn')">Power ON</button>
-            <button class = 'oppo' id="oppoPowerOff" onClick = "oppoButton('oppoPowerOff')">Power OFF</button>
+            <button class = 'oppo device' id="oppoPower" onClick = "oppoButton('oppoPower')">Power</button>
             <br>
-            <button class = 'curtain' id="oppoInputHdmi" onClick = "oppoButton('oppoInputHdmi')">HDMI</button>
-            <button class = 'curtain' id="oppoInputBluray" onClick = "oppoButton('oppoInputBluray')">Blu-Ray</button>
+            <button class = 'oppoInput buttonGroup' id="oppoInputHdmi" name = "oppoinputGroup" onClick = "oppoButton('oppoInputHdmi')">HDMI</button>
+            <button class = 'oppoInput buttonGroup' id="oppoInputBluray" name = "oppoinputGroup" onClick = "oppoButton('oppoInputBluray')">Blu-Ray</button>
         </div>
         <div class="mainDivs" id = "jvc">
             <div class = 'heading'>This is jvc</div>
-            <button class = 'jvc' id="jvcPowerOn" onClick = "jvcButton('jvcPowerOn')">Power ON</button>
-            <button class = 'jvc' id="jvcPowerOff" onClick = "jvcButton('jvcPowerOff')">Power OFF</button>
+            <button class = 'jvc device' id="jvcPower" onClick = "jvcButton('jvcPower')">Power</button>
             <br><br>
-            <button class = 'curtain' id="jvcLensMemory1" onClick = "jvcButton('jvcLensMemory1')">Wide Screen</button>
-            <button class = 'curtain' id="jvcLensMemory2" onClick = "jvcButton('jvcLensMemory2')">Normal</button>
-            <button class = 'curtain' id="jvcLensMemory3" onClick = "jvcButton('jvcLensMemory3')">Other 1</button>
-            <button class = 'curtain' id="jvcLensMemory4" onClick = "jvcButton('jvcLensMemory4')">Other 2</button>
+            <button class = 'jvcLens buttonGroup' id="jvcLensMemory1" name = "lensGroup" onClick = "jvcButton('jvcLensMemory1')">Wide Screen</button>
+            <button class = 'jvcLens buttonGroup' id="jvcLensMemory2" name = "lensGroup" onClick = "jvcButton('jvcLensMemory2')">Normal</button>
+            <button class = 'jvcLens buttonGroup' id="jvcLensMemory3" name = "lensGroup" onClick = "jvcButton('jvcLensMemory3')">Other 1</button>
+            <button class = 'jvcLens buttonGroup' id="jvcLensMemory4" name = "lensGroup" onClick = "jvcButton('jvcLensMemory4')">Other 2</button>
             <br>
-            <button class = 'curtain' id="jvcPictureMode1" onClick = "jvcButton('jvcPictureMode1')">Standard</button>
-            <button class = 'curtain' id="jvcPictureMode2" onClick = "jvcButton('jvcPictureMode2')">HDR</button>
-            <button class = 'curtain' id="jvcPictureMode3" onClick = "jvcButton('jvcPictureMode3')">HDR Other</button>
+            <button class = 'jvcMode buttonGroup' id="jvcPictureMode1" name = "modeGroup" onClick = "jvcButton('jvcPictureMode1')">Standard</button>
+            <button class = 'jvcMode buttonGroup' id="jvcPictureMode2" name = "modeGroup" onClick = "jvcButton('jvcPictureMode2')">HDR</button>
+            <button class = 'jvcMode buttonGroup' id="jvcPictureMode3" name = "modeGroup" onClick = "jvcButton('jvcPictureMode3')">HDR Other</button>
             <br>
-            <button class = 'curtain' id="jvcCMD1" onClick = "jvcButton('jvcCMD1')">CMD 1</button>
-            <button class = 'curtain' id="jvcCMD2" onClick = "jvcButton('jvcCMD2')">CMD 2</button>
-            <button class = 'curtain' id="jvcCMD3" onClick = "jvcButton('jvcCMD3')">CMD 3</button>
+            <button class = 'jvcCmd buttonGroup' id="jvcCMD1" name = "cmdGroup" onClick = "jvcButton('jvcCMD1')">CMD 1</button>
+            <button class = 'jvcCmd buttonGroup' id="jvcCMD2" name = "cmdGroup" onClick = "jvcButton('jvcCMD2')">CMD 2</button>
+            <button class = 'jvcCmd buttonGroup' id="jvcCMD3" name = "cmdGroup" onClick = "jvcButton('jvcCMD3')">CMD 3</button>
         </div>
         <div class="mainDivs" id = "curtain">
             <div class = 'heading'> Curtain</div>
-            <button class = 'curtain' id="curtainStop" onClick = "curtainButton('curtainStop')">STOP</button>
-            <button class = 'curtain' id="curtain235" onClick = "curtainButton('curtain235')">2.35</button>
-            <button class = 'curtain' id="curtain16_9" onClick = "curtainButton('curtain16_9')">16x9</button>
-            <button class = 'curtain' id="curtain4_3" onClick = "curtainButton('curtain4_3')">4x3</button>
-            <button class = 'curtain' id="curtainClose" onClick = "curtainButton('curtainClose')">CLOSE</button>
+            <button class = 'curtain buttonGroup' id="curtainStop" name = "curtainGroup" onClick = "curtainButton('curtainStop')">STOP</button>
+            <button class = 'curtain buttonGroup' id="curtain235" name = "curtainGroup" onClick = "curtainButton('curtain235')">2.35</button>
+            <button class = 'curtain buttonGroup' id="curtain16_9" name = "curtainGroup" onClick = "curtainButton('curtain16_9')">16x9</button>
+            <button class = 'curtain buttonGroup' id="curtain4_3" name = "curtainGroup" onClick = "curtainButton('curtain4_3')">4x3</button>
+            <button class = 'curtain buttonGroup' id="curtainClose" name = "curtainGroup" onClick = "curtainButton('curtainClose')">CLOSE</button>
         </div>
         <div class="mainDivs" id = "lights">
             <div class = 'heading'> RGB Lights</div>
-            <button class = 'curtain' id="lightsOff" onClick = "lightsButton('lightsOff')">OFF</button>
-            <button class = 'curtain' id="lightsOn" onClick = "lightsButton('lightsOn')">ON</button>
-            <button class = 'curtain' id="lightsPause" onClick = "lightsButton('lightsPause')">PAUSE</button>
+            <button class = 'lights buttonGroup' id="lightsOff" name = "lightGroup" onClick = "lightsButton('lightsOff')">OFF</button>
+            <button class = 'lights buttonGroup' id="lightsOn" name = "lightGroup" onClick = "lightsButton('lightsOn')">ON</button>
+            <button class = 'lights buttonGroup' id="lightsPause" name = "lightGroup" onClick = "lightsButton('lightsPause')">PAUSE</button>
 
         </div>
 
