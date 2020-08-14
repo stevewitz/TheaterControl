@@ -8,7 +8,7 @@ connect();
 function connect(){
     client = net.createConnection({ port: 23,host: HOST}, () => {
         client.setEncoding('ASCII');
-        console.log('connected to denon!');
+        console.log('connected to DENON!');
     }).on('error',(err)=>{
         console.log('Denon connection error:'+err)
         setTimeout(function(){connect();},5000)
@@ -17,7 +17,7 @@ function connect(){
         console.log("Denon Returned:" +data.toString() );
     });
     client.on('end', () => {
-        console.log('disconnected from projector'); // now we can send additional commands
+        console.log('disconnected from Denon'); // now we can send additional commands
     });
 }
 

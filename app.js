@@ -7,6 +7,7 @@ let app = express();
 let net = require('net');
 const clients = new Set()
 const denon = require('./denonControl.js')
+const oppo = require('./oppoControl.js')
 console.log(denon.denonCommands);
 let SerialPort = require('serialport');
 let port;
@@ -242,16 +243,16 @@ function processButtonPress(button) {
 
       break;
     case "oppoPowerOn":
-
+      oppo.send(oppo.oppoCommands.oppoPowerOn);
       break;
     case "oppoPowerOff":
-
+      oppo.send(oppo.oppoCommands.oppoPowerOff);
       break;
     case "oppoInputHdmi":
-
+      oppo.send(oppo.oppoCommands.oppoInputHdmi);
       break;
     case "oppoInputBluray":
-
+      oppo.send(oppo.oppoCommands.oppoInputBluray);
       break;
     case "denonPowerOn":
         denon.send(denon.denonCommands.denonPowerOn);
