@@ -11,7 +11,7 @@ module.exports.denonCommands={
     denonVolumeDown:'MVDOWN'
 }
 
-module.exports.function send(data){
-
+module.exports.send  = function(data){
+    console.log('send',data);
    //do something
 }
