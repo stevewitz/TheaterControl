@@ -1,5 +1,5 @@
 
-let denonCommands={
+module.exports.denonCommands={
     denonPowerOn:'PWON',
     denonPowerOff:'PWSTANDBY',
     denonPowerStatus:'PW?',
@@ -9,4 +9,9 @@ let denonCommands={
     denonZone2Off:'Z2OFF',
     denonVolumeUp:'MVUP',
     denonVolumeDown:'MVDOWN'
+}
+
+module.exports.function send(data){
+
+   //do something
 }

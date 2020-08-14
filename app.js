@@ -6,7 +6,7 @@ let http = require('http');
 let app = express();
 let net = require('net');
 const clients = new Set()
-let denon = require('./denonControl.js')
+const denon = require('./denonControl.js')
 let SerialPort = require('serialport');
 let port;
 const Readline = SerialPort.parsers.Readline;
