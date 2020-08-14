@@ -254,30 +254,28 @@ function processButtonPress(button) {
 
       break;
     case "denonPowerOn":
-      /////////////////
-        //////////////////////
-        console.log("returned: "+ denonCommands.denonPowerOn);
+        denon.send(denon.denonCommands.denonPowerOn);
       break;
     case "denonPowerOff":
-
+      denon.send(denon.denonCommands.denonPowerOff);
       break;
     case "denonInputBluray":
-
+      denon.send(denon.denonCommands.denonInputBluray);
       break;
     case "denonInputDVD":
-
+      denon.send(denon.denonCommands.denonInputDVD);
       break;
     case "denonZone3Off":
-
+      denon.send(denon.denonCommands.denonZone3Off);
       break;
     case "denonZone2Off":
-
+      denon.send(denon.denonCommands.denonZone2Off);
       break;
     case "denonVolumeUp":
-
+      denon.send(denon.denonCommands.denonVolumeUp);
       break;
     case "denonVolumeDown":
-
+      denon.send(denon.denonCommands.denonVolumeDown);
       break;
 
   }
