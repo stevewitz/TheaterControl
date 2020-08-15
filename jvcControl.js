@@ -1,5 +1,7 @@
 const net = require('net');
 const HOST = '192.168.2.110'
+
+
  function send(command) {
      currentCommand = command;
      currentCommandName = "name";
@@ -15,18 +17,16 @@ const HOST = '192.168.2.110'
              case 'PJ_OK' :
                  console.log('PJ_OK received - sending PJREQ');
                  client.write('PJREQ');
-                 console.log("*********************************************************************************");
-                 break;
-             case 'PJACK' :
-                 console.log('PJACK received send command:' + command);
-                 //send command here
+             break;
 
+             case 'PJACK' :
+                 console.log('\x1b[41m%s\x1b[0m','PJACK received send command:' + command);
+                 console.log('\x1b[31m%s\x1b[0m','PJACK received send command:' + command);
                  client.write(command);
-                 console.log("*********************************************************************************");
-                 commandType = command[0];
-                 break;
+             break;
+
              default:
-                 switch (commandType) {
+                 switch (command[0]) {
 
                      case(0x3f): // this is a Reference Command (?) expect 2 seperate packets back
                          //scan buffer for 2 0x0a to see if both messages are concatonated
@@ -38,10 +38,10 @@ const HOST = '192.168.2.110'
                                  //we have a valid command
                                  returnedInfo = data;
                                  console.log("received Reference data as separate data.  Data is: " + returnedInfo.toString() + "  Reference Sent: " + currentCommand.toString());
-                                // dataFromProjector(currentCommandName, returnedInfo);
+                                 // dataFromProjector(currentCommandName, returnedInfo);
                              } else {
                                  //command returned invalid date
-                                 console.log("received requested data as sparate data, but it was invalid  Command sent was: " + currentCommand.toString());
+                                 console.log("received requested data as separate data, but it was invalid  Command sent was: " + currentCommand.toString());
                              }
 
                              client.end();
@@ -52,7 +52,7 @@ const HOST = '192.168.2.110'
                                  if (data[data.length - 1] == 0x0a) {
                                      returnedInfo = data.slice(6, data.length);
                                      console.log("received Reference data as concatinated data.  Data is: " + returnedInfo.toString() + "  Reference Sent: " + currentCommand.toString());
-                                 //    dataFromProjector(currentCommandName, returnedInfo)
+                                     //    dataFromProjector(currentCommandName, returnedInfo)
                                  }
                              } else {
                                  //command returned invalid date
@@ -60,7 +60,7 @@ const HOST = '192.168.2.110'
                              }
                              client.end();
                          }
-                         break;
+                     break;
 
                      case (0x21): // this is an ack for a operation
                          if (data[data.length - 1] == 0x0a) {//valid ack
@@ -70,15 +70,16 @@ const HOST = '192.168.2.110'
                          }
 
                          client.end();
-                         break;
+                    break;
 
                      default:
-                         console.log("Received invalid data unknown type.  First bute of returned string is: " + data[0]);
+                         console.log("Received invalid data unknown type.  First byte of returned string is: " + data[0]);
                          client.end();
                          console.log("*********************************************************************************");
                          console.log("Command" + command);
+                     break;
                  }
-
+            break;
          }
      });
  }
