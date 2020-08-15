@@ -8,6 +8,7 @@ let net = require('net');
 const clients = new Set()
 const denon = require('./denonControl.js')
 const oppo = require('./oppoControl.js')
+const jvc = require('./jvcControl.js')
 console.log(denon.denonCommands);
 let SerialPort = require('serialport');
 let port;
@@ -207,10 +208,10 @@ function processButtonPress(button) {
       port.write("0");
       break;
     case "jvcPowerOn":
-
+      jvc.send(jvc.jvcCommands.jvcPowerOn);
       break;
     case "jvcPowerOff":
-
+      jvc.send(jvc.jvcCommands.jvcPowerOff);
       break;
     case "jvcLensMemory1":
 

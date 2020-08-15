@@ -1,5 +1,4 @@
 const net = require('net');
-//const HOST = 'localhost' // use when running tcpbridge
 const HOST = '192.168.2.111'
 let client;
 
