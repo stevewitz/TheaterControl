@@ -16,7 +16,100 @@ if (recreateDevice){
         id: "Denon",
         name: "Denon",
         commands:[
-          n
+            {   name:'Power ON',
+                code:'PWON',
+                sendto:"Denon"
+            },
+            {   name:'Power OFF',
+                code:'PWSTANDBY',
+                sendto:"Denon"
+            },
+            {   name:'Power Status',
+                code:'PW?',
+                sendto:"Denon"
+            },
+            {   name:'Mute ON',
+                code:'MUON',
+                sendto:"Denon"
+            },
+            {   name:'Mute OFF',
+                code:'MUOFF',
+                sendto:"Denon"
+            },
+            {   name:'Mute Status',
+                code:'MU?',
+                sendto:"Denon"
+            },
+            {   name:'Select Input Phono',
+                code:'SIPHONO',
+                sendto:"Denon"
+            },
+
+            {   name:'Select Input CD',
+                code:'SICD',
+                sendto:"Denon"
+            },
+            {   name:'Select Input Tuner',
+                code:'SITUNER',
+                sendto:"Denon"
+            },
+            {   name:'Select Input DVD',
+                code:'SIDVVD',
+                sendto:"Denon"
+            },
+            {   name:'Select Input BluRay',
+                code:'SIBD',
+                sendto:"Denon"
+            },
+            {   name:'Select Input TV',
+                code:'SITV',
+                sendto:"Denon"
+            },
+            {   name:'Select Input SAT/CBL',
+                code:'SISAT/CBL',
+                sendto:"Denon"
+            },
+            {   name:'Select Input MediaPlayer',
+                code:'SIMPLAY',
+                sendto:"Denon"
+            },
+            {   name:'Select Input GAME',
+                code:'SIGAME',
+                sendto:"Denon"
+            },
+            {   name:'Select Input Status',
+                code:'SI?',
+                sendto:"Denon"
+            },
+            {   name:'Main Zone ON',
+                code:'ZMON',
+                sendto:"Denon"
+            },
+            {   name:'Main Zone OFF',
+                code:'ZMOFF',
+                sendto:"Denon"
+            },
+            {   name:'Main Zone Status',
+                code:'ZM?',
+                sendto:"Denon"
+            },
+            {   name:'Zone 2 OFF',
+                code:'Z2OFF',
+                sendto:"Denon"
+            },
+            {   name:'Zone 3 OFF',
+                code:'Z3OFF',
+                sendto:"Denon"
+            },
+            {   name:'Volume +',
+                code:'MVUP',
+                sendto:"Denon"
+            },
+            {   name:'Volume -',
+                code:'MVDOWN',
+                sendto:"Denon"
+            }
+
 
         ],
         events:[

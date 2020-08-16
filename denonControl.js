@@ -10,7 +10,7 @@ function connect(){
         console.log('connected to DENON!');
     }).on('error',(err)=>{
         console.log('Denon connection error:'+err)
-        setTimeout(function(){connect();},5000)
+       // setTimeout(function(){connect();},5000)////////////////////////////////////////////////////
     });
     client.on('data', (data) => {
         console.log("Denon Returned:" +data.toString() );
@@ -27,10 +27,12 @@ module.exports.denonCommands={
     denonPowerStatus:'PW?',
     denonInputBluray:'SIBD',
     denonInputDVD:'SIDVD',
+    denonInputTV:'SITV',
     denonZone3Off:'Z3OFF',
     denonZone2Off:'Z2OFF',
     denonVolumeUp:'MVUP',
     denonVolumeDown:'MVDOWN'
+
 }
 
 module.exports.send  = function(data){

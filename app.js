@@ -213,36 +213,43 @@ function processButtonPress(button) {
     case "jvcPowerOff":
       jvc.send(jvc.jvcCommands.jvcPowerOff);
       break;
-    case "jvcLensMemory1":
-
+    case "":
+      jvc.send(jvc.jvcCommands.jvcLensMemory1);
       break;
     case "jvcLensMemory2":
-
+      jvc.send(jvc.jvcCommands.jvcLensMemory2);
       break;
     case "jvcLensMemory3":
-
+      jvc.send(jvc.jvcCommands.jvcLensMemory3);
       break;
     case "jvcLensMemory4":
-
+      jvc.send(jvc.jvcCommands.jvcLensMemory4);
       break;
     case "jvcPictureMode1":
-
+      jvc.send(jvc.jvcCommands.jvcPictureMode1);
       break;
     case "jvcPictureMode2":
-
+      jvc.send(jvc.jvcCommands.jvcPictureMode2);
       break;
     case "jvcPictureMode3":
-
+      jvc.send(jvc.jvcCommands.jvcPictureMode3);
+      break;
+    case "jvcPictureMode4":
+      jvc.send(jvc.jvcCommands.jvcPictureMode4);
       break;
     case "jvcCMD1":
-
+      jvc.send(jvc.jvcCommands.jvcCMD1);
       break;
     case "jvcCMD2":
-
+      jvc.send(jvc.jvcCommands.jvcCMD2);
       break;
     case "jvcCMD3":
-
+      jvc.send(jvc.jvcCommands.jvcCMD3);
       break;
+    case "jvcPowerStatus":
+      jvc.send(jvc.jvcCommands.jvcPowerStatus);
+      break;
+
     case "oppoPowerOn":
       oppo.send(oppo.oppoCommands.oppoPowerOn);
       break;
@@ -267,6 +274,10 @@ function processButtonPress(button) {
     case "denonInputDVD":
       denon.send(denon.denonCommands.denonInputDVD);
       break;
+    case "denonInputTV":
+      denon.send(denon.denonCommands.denonInputTV);
+      break;
+
     case "denonZone3Off":
       denon.send(denon.denonCommands.denonZone3Off);
       break;
