@@ -32,7 +32,21 @@
 
     <div id= "main">
         <div id = "theater">
-            <h1>This is the theater</h1>
+            <div class = 'heading'>THEATER</div>
+            <button class= "theater device" id = "moviePower" name = theaterButtonGroup onclick="theaterButton('moviePower')">Movie Power</button>
+            <br>
+            <button class= "theater buttonGroup1" id = "movieWatchOppo" name = theaterWatchGroup onclick="theaterButton('movieWatchOppo')">OPPO</button>
+            <button class= "theater buttonGroup1" id = "movieWatchShield" name = theaterWatchGroup onclick="theaterButton('movieWatchShield')">SHIELD</button>
+            <button class= "theater buttonGroup1" id = "movieWatchPanasonic" name = theaterWatchGroup onclick="theaterButton('movieWatchPanasonic')">PANANY</button>
+            <br>
+            <button class= "theater buttonGroup1" id = "movieTypeStandard" name = theaterTypeGroup onclick="theaterButton('movieTypeStandard')">STANDARD</button>
+            <button class= "theater buttonGroup1 " id = "movieTypeBW" name = theaterTypeGroup onclick="theaterButton('movieTypeBW')">B&W</button>
+            <button class= "theater buttonGroup1 " id = "movieTypeHDR" name = theaterTypeGroup onclick="theaterButton('movieTypeHDR')">HDR</button>
+            <button class= "theater buttonGroup1 " id = "movieTypeHDRPanny" name = theaterTypeGroup onclick="theaterButton('movieTypeHDRPanny')">HDR PANNY</button>
+
+
+
+
         </div>
 
 
@@ -80,6 +94,7 @@
             <button class = 'jvcCmd buttonGroup' id="jvcCMD3" name = "cmdGroup" onClick = "jvcButton('jvcCMD3')">CMD D</button>
             <button class = 'jvcCmd buttonGroup' id="jvcPowerStatus" name = "cmdGroup" onClick = "jvcButton('jvcPowerStatus')">PWR STATUS</button>
         </div>
+        <br>
         <div class="mainDivs" id = "curtain">
             <div class = 'heading'> Curtain</div>
             <button class = 'curtain buttonGroup' id="curtainStop" name = "curtainGroup" onClick = "curtainButton('curtainStop')">STOP</button>

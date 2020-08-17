@@ -48,7 +48,8 @@ let theaterState={
   denonZone3Off:0,
   denonZone2Off:0,
   denonVolumeUp:0,
-  denonVolumeDown:0
+  denonVolumeDown:0,
+  moviePower:0
 };
 
 

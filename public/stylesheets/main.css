@@ -49,15 +49,35 @@ body{
 }
 
 .mainDivs{
-  display:inline-block ;
-  border-style: groove;
+  display:inline-table;
   width:400px;
   height:220px;
+  margin-top:1px;
+  border: 2px solid grey;
+}
+.mainDivs#denon{
+  width: 200px;
+}
+
+.mainDivs#oppo{
+  width:140px;
+
+}
+.mainDivs#jvc{
+  width:330px;
+
+}
+.mainDivs#curtain{
+  width:270px;
+  height:90px;
+}
+.mainDivs#lights{
+  width:170px;
+  height:90px;
 }
 .device {
   border-radius: 5px;
   margin-top:6px;
-  height:30px;
   background-color: darkgray;
 }
 .volume{
@@ -71,7 +91,7 @@ body{
   background-color: grey;
 }
 .device.pressed{
-  background-color: #ead0d0;
+  background-color:  #ea2525;
 }
 #theater{
   width:95%;
@@ -81,18 +101,42 @@ body{
 .buttonGroup{
   margin-right: -5px;
   margin-top:5px;
-  font-size:1.2em;
-  background-color: #4CAF50;
-  color:#524343;
-  border: 1px solid green;
+  font-size: 1em;
+  background-color: #0426a0;
+  color:white;
+  border: 1px solid #55ca6c;
   height:30px;
 }
 .buttonGroup:hover  {
   background-color: #3e8e41;
 }
 .buttonGroup.pressed{
-  background-color: #ead0d0;
+  background-color: #3e8e41;
 }
+#denonPower, #oppoPower, #jvcPower{
+  height:35px;
+}
+
+.buttonGroup1{
+  margin-right: -5px;
+  margin-top:5px;
+  font-size:.9em;
+  background-color: #0426a0;
+  color:white;
+  border: 1px solid #55ca6c;
+  height:40px;
+  width:100px;
+}
+.buttonGroup1:hover  {
+  background-color: #3e8e41;
+}
+.buttonGroup1.pressed{
+  background-color: #ea2525;
+}
+#moviePower{
+  height:40px;
+}
+
 .heading{
   font-weight:bold;
   margin-top: 10px;

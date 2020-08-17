@@ -55,6 +55,30 @@ function lightsButton(value){
     console.log("Lights button: "+ value + " was pressed");
     buttonPressStates(value);
 }
+
+function theaterButton(value){
+    console.log("Theater button: "+ value + " was pressed");
+    if(value == "moviePower"){
+        if(theaterState.moviePower){ // if it'son turn it off
+            theaterState.moviePower=0;
+            value = "moviePowerOff";
+            let y = document.getElementsByName( "theaterTypeGroup");  //clear out theater selection buttons
+            for (let i = 0; i < y.length; i++) {
+                theaterState[y[i].id] = 0;
+            }
+            y = document.getElementsByName( "theaterWatchGroup");
+            for (let i = 0; i < y.length; i++) {
+                theaterState[y[i].id] = 0;
+            }
+        }
+        else{
+            theaterState.moviePower=1;
+            value = "moviePowerOn";
+        }
+    }
+    buttonPressStates(value);
+}
+
 function oppoButton(value){
     console.log("Oppo button: "+ value + " was pressed");
     if(value == "oppoPower"){
