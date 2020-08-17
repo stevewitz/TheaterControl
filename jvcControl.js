@@ -21,11 +21,13 @@ const HOST = '192.168.2.110'
 
              case 'PJACK' :
                //  console.log('\x1b[41m%s\x1b[0m','PJACK received send command:' + command);
-                 console.log('\x1b[31m%s\x1b[0m','PJACK received.  Will send command:' + command);
+                 console.log('\x1b[31m%s\x1b[0m','PJACK received.  Will send command:' + command + "  HEX:  " + command.toString('hex'));
                  client.write(command);
+                 let destroyTimeout =setTimeout(function(){client.destroy(); console.log("socket destroyed");},1000);  // destroy socket 1500ms after sending data
              break;
 
              default:
+                 console.log('\x1b[41m%s\x1b[0m',"Returnd RAW data is: " + data.toString('hex'));
                  switch (command[0]) {
 
                      case(0x3f): // this is a Reference Command (?) expect 2 seperate packets back
@@ -37,11 +39,11 @@ const HOST = '192.168.2.110'
                              if (data[data.length - 1] == 0x0a) {
                                  //we have a valid command
                                  returnedInfo = data;
-                                 console.log("received Reference data as separate data.  Data is: " + returnedInfo.toString() + "  Reference Sent: " + currentCommand.toString());
+                                 console.log("received Reference data as separate data.  Data is: " + returnedInfo + "  Reference Sent: " + currentCommand);
                                  // dataFromProjector(currentCommandName, returnedInfo);
                              } else {
                                  //command returned invalid date
-                                 console.log("received requested data as separate data, but it was invalid  Command sent was: " + currentCommand.toString());
+                                 console.log("received requested data as separate data, but it was invalid  Command sent was: " + currentCommand);
                              }
 
                              client.end();
@@ -51,12 +53,12 @@ const HOST = '192.168.2.110'
                              if (data[6] == 0x40) { //this is the data we want
                                  if (data[data.length - 1] == 0x0a) {
                                      returnedInfo = data.slice(6, data.length);
-                                     console.log("received Reference data as concatinated data.  Data is: " + returnedInfo.toString() + "  Reference Sent: " + currentCommand.toString());
+                                     console.log("received Reference data as concatinated data.  Data is: " + returnedInfo + "  Reference Sent: " + currentCommand);
                                      //    dataFromProjector(currentCommandName, returnedInfo)
                                  }
                              } else {
                                  //command returned invalid date
-                                 console.log("received requested data as concatonated data, but it was invalid  Command sent was: " + currentCommand.toString());
+                                 console.log("received requested data as concatonated data, but it was invalid  Command sent was: " + currentCommand);
                              }
                              client.end();
                          }
@@ -81,6 +83,9 @@ const HOST = '192.168.2.110'
                  }
             break;
          }
+     }).on('error',(err)=>{
+         console.log('JVC connection error:'+err)
+        client.destroy();
      });
  }
 

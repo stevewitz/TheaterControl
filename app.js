@@ -213,7 +213,7 @@ function processButtonPress(button) {
     case "jvcPowerOff":
       jvc.send(jvc.jvcCommands.jvcPowerOff);
       break;
-    case "":
+    case "jvcLensMemory1":
       jvc.send(jvc.jvcCommands.jvcLensMemory1);
       break;
     case "jvcLensMemory2":
