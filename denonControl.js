@@ -1,4 +1,5 @@
 const net = require('net');
+const app = require('./app.js')
 const HOST = '192.168.2.111'
 let client;
 
@@ -14,6 +15,7 @@ function connect(){
     });
     client.on('data', (data) => {
         console.log("Denon Returned:" +data.toString() );
+        app.sendData("denon",data.toString());
     });
     client.on('end', () => {
         console.log('disconnected from Denon'); // now we can send additional commands

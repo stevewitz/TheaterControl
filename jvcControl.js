@@ -1,4 +1,5 @@
 const net = require('net');
+const app = require('./app.js')
 const HOST = '192.168.2.110'
 
 
@@ -28,6 +29,7 @@ const HOST = '192.168.2.110'
 
              default:
                  console.log('\x1b[41m%s\x1b[0m',"Returnd RAW data is: " + data.toString('hex'));
+                 app.sendData("jvc",data.toString());
                  switch (command[0]) {
 
                      case(0x3f): // this is a Reference Command (?) expect 2 seperate packets back

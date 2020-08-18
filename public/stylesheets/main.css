@@ -94,9 +94,10 @@ body{
   background-color:  #ea2525;
 }
 #theater{
-  width:95%;
+  width:99.5%;
   height:200px;
   border:3px solid;
+
 }
 .buttonGroup{
   margin-right: -5px;
@@ -140,5 +141,17 @@ body{
 .heading{
   font-weight:bold;
   margin-top: 10px;
+}
 
+.textDiv{
+  display: block;
+  border:1px solid #55ca6c;
+
+}
+.output{
+  height:100px;
+  width:300px;
+}
+label{
+  vertical-align: top;
 }

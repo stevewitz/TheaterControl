@@ -15,28 +15,55 @@ ws.addEventListener("message", (data) => {
     console.log(data);
 
     data  = JSON.parse(data.data);
-    theaterState=data.value;
+
     switch(data.type){
         case "state":{
+            theaterState=data.value;
             for(let device in data.value){
-
-                if(data.value[device] == 1){
-                    document.getElementById(device).classList.add("pressed");
+                try {
+                    if (data.value[device] == 1) {
+                        document.getElementById(device).classList.add("pressed");
+                    } else {
+                        document.getElementById(device).classList.remove("pressed");
+                    }
+                    console.log("Device: " + device + " Value: " + data.value[device]);
                 }
-                else{
-                    document.getElementById(device).classList.remove("pressed");
-                }
-                console.log("Device: " + device + " Value: " + data.value[device]);
+                catch(e){ console.log("error it TRY: " + device);}
             }
-            break  ;
         }
+            break;
+
         case "returnedData":{
+        //to be added to
 
+        }
+            break;
 
+        case("webcore"):{
+            console.log("This data came from WEBCORE: " + data.value);
+            document.getElementById("webcoreOutput").innerText = (data.value + document.getElementById("webcoreOutput").value).substring(0,200);
+        }
+            break;
+        case("oppo"):{
+            textdata = (data.value + document.getElementById("oppoOutput").value).substring(0,200);
+            document.getElementById("oppoOutput").innerText = textdata;
         }
         break;
-
-
+        case("denon"):{
+            textdata = (data.value + document.getElementById("denonOutput").value).substring(0,200);
+            document.getElementById("denonOutput").innerText = textdata;
+        }
+            break;
+        case("jcv"):{
+            textdata = (data.value + document.getElementById("jvcOutput").value).substring(0,200);
+            document.getElementById("jvcOutput").innerText = textdata;
+        }
+            break;
+        case("controller"):{
+            textdata = (data.value + document.getElementById("controllerOutput").value).substring(0,200);
+            document.getElementById("controllerOutput").innerText = textdata;
+        }
+            break;
     }
 
 

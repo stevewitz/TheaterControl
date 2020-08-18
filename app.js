@@ -72,7 +72,11 @@ port.on('open', () => {
 parser.on('data', function (data) {
 
   
-  console.log('Data:', data.toString())
+ // console.log('Data:', data.toString())
+  console.log("Controller Returned:" +data.toString() );
+  exports.sendData("controller",data.toString());
+
+
 })
 port.write("1");
 app.use(express.static('public')); // set up the public directory as web accessible
@@ -92,8 +96,10 @@ app.get('/curtain', function (req, res) {
   res.render('curtain.ejs',{ });
 })
 
-app.post('/', urlencodedParser, (req, res) => {
+app.post('/', urlencodedParser, (req, res) => { // ALL Webcore data comes in here
   console.log("this is the text: " + req.body);
+  module.exports.sendData("webcore", req.body);
+
 });
 
 
@@ -160,6 +166,24 @@ wss.on("connection",ws => {
   });
 
 });
+
+/////////////////////////
+module.exports.sendData = function(type, value){
+  for(let client of clients) {   //send packet to all clients
+    let systemInfo={
+      type:type,
+      value: value
+    };
+    if(client.readyState === 1) {
+      client.send(JSON.stringify(systemInfo));
+    }
+  }
+
+
+
+
+}
+
 
 //////////////////////////////////////
 
