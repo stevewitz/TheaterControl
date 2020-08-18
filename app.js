@@ -95,9 +95,9 @@ app.get('/', function (req, res) {
 app.get('/curtain', function (req, res) {
   res.render('curtain.ejs',{ });
 })
-
+                                                                                                      ////////////////////////////////
 app.post('/', urlencodedParser, (req, res) => { // ALL Webcore data comes in here
-  console.log("this is the text: " + req.body);
+  console.log("this is the text: " + req.body);                                                      /////////////////////////////////
   module.exports.sendData("webcore", req.body);
 
 });

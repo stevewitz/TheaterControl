@@ -33,37 +33,46 @@ ws.addEventListener("message", (data) => {
         }
             break;
 
-        case "returnedData":{
+        case "returnedData":
         //to be added to
 
-        }
+
             break;
 
-        case("webcore"):{
+        case("webcore"):
             console.log("This data came from WEBCORE: " + data.value);
             document.getElementById("webcoreOutput").innerText = (data.value + document.getElementById("webcoreOutput").value).substring(0,200);
-        }
-            break;
-        case("oppo"):{
+            let inData = data.value.toString().split(".");
+            //parse webcore data here and execute
+            //switch(inData[1]){
+
+
+           // }
+
+
+
+
+        break;
+
+        case("oppo"):
             textdata = (data.value + document.getElementById("oppoOutput").value).substring(0,200);
             document.getElementById("oppoOutput").innerText = textdata;
-        }
         break;
-        case("denon"):{
+
+        case("denon"):
             textdata = (data.value + document.getElementById("denonOutput").value).substring(0,200);
             document.getElementById("denonOutput").innerText = textdata;
-        }
-            break;
-        case("jcv"):{
+        break;
+
+        case("jvc"):
             textdata = (data.value + document.getElementById("jvcOutput").value).substring(0,200);
             document.getElementById("jvcOutput").innerText = textdata;
-        }
-            break;
-        case("controller"):{
+        break;
+
+        case("controller"):
             textdata = (data.value + document.getElementById("controllerOutput").value).substring(0,200);
             document.getElementById("controllerOutput").innerText = textdata;
-        }
-            break;
+        break;
     }
 
 
