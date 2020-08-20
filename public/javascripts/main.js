@@ -37,41 +37,90 @@ ws.addEventListener("message", (data) => {
         //to be added to
 
 
-            break;
+        break;
 
         case("webcore"):
             console.log("This data came from WEBCORE: " + data.value);
-            document.getElementById("webcoreOutput").innerText = (data.value + document.getElementById("webcoreOutput").value).substring(0,200);
+            document.getElementById("webcoreOutput").value = (data.value +"\r"+ document.getElementById("webcoreOutput").value).substring(0,200);
             let inData = data.value.toString().split(".");
             //parse webcore data here and execute
-            //switch(inData[1]){
+            switch(inData[1]){
+                case "standard":
+                    if(inData[0]=="ON"){
+                        console.log("Switch " + inData[1] + " is ON" );
+                    }else if(inData[0] == "OFF"){
+                        console.log("Switch " + inData[1] + " is OFF");
+                    }
+                break;
+                case "standard widescreen":
+                    if(inData[0]=="ON"){
+                        console.log("Switch " + inData[1] + " is ON" );
+                    }else if(inData[0] == "OFF"){
+                        console.log("Switch " + inData[1] + " is OFF");
+                    }
+                break;
+                case "black and white":
+                    if(inData[0]=="ON"){
+                        console.log("Switch " + inData[1] + " is ON" );
+                    }else if(inData[0] == "OFF"){
+                        console.log("Switch " + inData[1] + " is OFF");
+                    }
+                break;
 
+                case "movie":
+                    if(inData[0]=="ON"){
+                        console.log("Switch " + inData[1] + " is ON" );
+                        theaterButton("moviePower")
+                    }else if(inData[0] == "OFF"){
+                        console.log("Switch " + inData[1] + " is OFF");
+                        theaterButton("moviePower")
+                    }
+                break;
 
-           // }
+                case "play":
+                    if(inData[0]=="ON"){
+                        console.log("Switch " + inData[1] + " is ON" );
+                    }else if(inData[0] == "OFF"){
+                        console.log("Switch " + inData[1] + " is OFF");
+                    }
+                break;
 
+                case "hdr":
+                    if(inData[0]=="ON"){
+                        console.log("Switch " + inData[1] + " is ON" );
+                    }else if(inData[0] == "OFF"){
+                        console.log("Switch " + inData[1] + " is OFF");
+                    }
+                break;
 
-
-
+                case "hdr two":
+                    if(inData[0]=="ON"){
+                        console.log("Switch " + inData[1] + " is ON" );
+                    }else if(inData[0] == "OFF"){
+                        console.log("Switch " + inData[1] + " is OFF");
+                    }
+                break;
+            }
         break;
 
         case("oppo"):
-            textdata = (data.value + document.getElementById("oppoOutput").value).substring(0,200);
-            document.getElementById("oppoOutput").innerText = textdata;
+            textdata = (data.value  + document.getElementById("oppoOutput").value).substring(0,200);
+            document.getElementById("oppoOutput").value = textdata;
         break;
 
         case("denon"):
-            textdata = (data.value + document.getElementById("denonOutput").value).substring(0,200);
-            document.getElementById("denonOutput").innerText = textdata;
+            textdata = (data.value +"\r" + document.getElementById("denonOutput").value).substring(0,200);
+            document.getElementById("denonOutput").value = textdata;
         break;
 
         case("jvc"):
-            textdata = (data.value + document.getElementById("jvcOutput").value).substring(0,200);
-            document.getElementById("jvcOutput").innerText = textdata;
+            textdata = (data.value +"\r" + document.getElementById("jvcOutput").value).substring(0,200);
+            document.getElementById("jvcOutput").value = textdata;
         break;
 
         case("controller"):
-            textdata = (data.value + document.getElementById("controllerOutput").value).substring(0,200);
-            document.getElementById("controllerOutput").innerText = textdata;
+            textdata = (data.value +"\r"+ document.getElementById("controllerOutput").value).substring(0,200);
+            document.getElementById("controllerOutput").value = textdata;
         break;
     }
 
@@ -84,7 +133,8 @@ ws.addEventListener("close", (data) => {
 });
 
 function curtainButton(value){
-    console.log("Curtain button: "+ value + " was pressed");
+    console.log('\u25bc');
+    console.log("\u25c0 Curtain button: "+ value + " was pressed");
     buttonPressStates(value);
 }
 function lightsButton(value){
@@ -98,6 +148,7 @@ function theaterButton(value){
         if(theaterState.moviePower){ // if it'son turn it off
             theaterState.moviePower=0;
             value = "moviePowerOff";
+            devicesTurnOff();
             let y = document.getElementsByName( "theaterTypeGroup");  //clear out theater selection buttons
             for (let i = 0; i < y.length; i++) {
                 theaterState[y[i].id] = 0;
@@ -110,6 +161,7 @@ function theaterButton(value){
         else{
             theaterState.moviePower=1;
             value = "moviePowerOn";
+            deviceStartUp();
         }
     }
     buttonPressStates(value);
@@ -201,4 +253,27 @@ function sendToServer (value) {
         value: value
     };
     ws.send(JSON.stringify(systemInfo));
+}
+
+function deviceStartUp(){// turn on and set up all initial inputs
+   oppoButton("oppoPower") ;
+   denonButton("denonPower");
+   lightsButton("lightsOn");
+
+   jvcButton("jvcPower") /////  disabled while testing
+   setTimeout(function(){ oppoButton("oppoInputHdmi");}, 1500);
+   setTimeout(function(){ denonButton("denonInputBluray");}, 1510);
+   setTimeout(function(){ denonButton("denonZone3Off");}, 2500);
+   setTimeout(function(){ denonButton("denonZone2Off");}, 3500);
+   setTimeout(function(){ jvcButton("jvcLensMemory2");}, 120000);
+   setTimeout(function(){ jvcButton("jvcPictureMode1");}, 130000);
+   setTimeout(function(){ jvcButton("jvcCMD1");}, 140000);
+
+
+}
+
+function devicesTurnOff(){
+    oppoButton("oppoPower") ;
+    denonButton("denonPower");
+    jvcButton("jvcPower") /////  disabled while testing
 }

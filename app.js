@@ -210,6 +210,7 @@ function processButtonPress(button) {
   switch (button) {
     case "curtainStop":
       port.write("5");
+
     break;
     case "curtain235":
       port.write("4");

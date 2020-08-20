@@ -49,10 +49,11 @@ body{
 }
 
 .mainDivs{
-  display:inline-table;
+  vertical-align: top;
+  display:inline-block;
   width:400px;
   height:220px;
-  margin-top:1px;
+
   border: 2px solid grey;
 }
 .mainDivs#denon{
@@ -97,6 +98,7 @@ body{
   width:99.5%;
   height:200px;
   border:3px solid;
+  margin-bottom: 15px;
 
 }
 .buttonGroup{
@@ -119,14 +121,15 @@ body{
 }
 
 .buttonGroup1{
+  vertical-align: top;
   margin-right: -5px;
   margin-top:5px;
-  font-size:.9em;
+  font-size:.8em;
   background-color: #0426a0;
   color:white;
   border: 1px solid #55ca6c;
   height:40px;
-  width:100px;
+  width:120px;
 }
 .buttonGroup1:hover  {
   background-color: #3e8e41;
