@@ -48,7 +48,7 @@ ws.addEventListener("message", (data) => {
                 case "standard":
                     if(inData[0]=="ON"){
                         console.log("Switch " + inData[1] + " is ON" );
-                        standardButton();                                      //
+                        theaterButton("movieTypeStandard") ;                                    //
                     }else if(inData[0] == "OFF"){
                         console.log("Switch " + inData[1] + " is OFF");        // --
                     }
@@ -56,7 +56,7 @@ ws.addEventListener("message", (data) => {
                 case "standard widescreen":
                     if(inData[0]=="ON"){
                         console.log("Switch " + inData[1] + " is ON" );
-                        standardWideScreen();                                  //
+                        theaterButton("movieTypeStandardWidescreen");                                  //
                     }else if(inData[0] == "OFF"){
                         console.log("Switch " + inData[1] + " is OFF");        // --
                     }
@@ -64,7 +64,7 @@ ws.addEventListener("message", (data) => {
                 case "black and white":
                     if(inData[0]=="ON"){
                         console.log("Switch " + inData[1] + " is ON" );
-                        standardBlackAndWhite();                              //
+                        theaterButton("movieTypeBW");                              //
                     }else if(inData[0] == "OFF"){
                         console.log("Switch " + inData[1] + " is OFF");       // --
                     }
@@ -93,7 +93,7 @@ ws.addEventListener("message", (data) => {
                 case "hdr":
                     if(inData[0]=="ON"){
                         console.log("Switch " + inData[1] + " is ON" );
-                        hdrOn();                                                   //
+                        theaterButton("movieTypeHDR");                                                   //
                     }else if(inData[0] == "OFF"){
                         console.log("Switch " + inData[1] + " is OFF");            // --
 
@@ -103,7 +103,7 @@ ws.addEventListener("message", (data) => {
                 case "hdr two":
                     if(inData[0]=="ON"){
                         console.log("Switch " + inData[1] + " is ON" );
-                        hdrTwo();                                                   //
+                        theaterButton("movieTypeHDRTwo")                                                   //
                     }else if(inData[0] == "OFF"){
                         console.log("Switch " + inData[1] + " is OFF");             // --
                     }
