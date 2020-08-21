@@ -48,56 +48,64 @@ ws.addEventListener("message", (data) => {
                 case "standard":
                     if(inData[0]=="ON"){
                         console.log("Switch " + inData[1] + " is ON" );
+                        standardButton();                                      //
                     }else if(inData[0] == "OFF"){
-                        console.log("Switch " + inData[1] + " is OFF");
+                        console.log("Switch " + inData[1] + " is OFF");        // --
                     }
                 break;
                 case "standard widescreen":
                     if(inData[0]=="ON"){
                         console.log("Switch " + inData[1] + " is ON" );
+                        standardWideScreen();                                  //
                     }else if(inData[0] == "OFF"){
-                        console.log("Switch " + inData[1] + " is OFF");
+                        console.log("Switch " + inData[1] + " is OFF");        // --
                     }
                 break;
                 case "black and white":
                     if(inData[0]=="ON"){
                         console.log("Switch " + inData[1] + " is ON" );
+                        standardBlackAndWhite();                              //
                     }else if(inData[0] == "OFF"){
-                        console.log("Switch " + inData[1] + " is OFF");
+                        console.log("Switch " + inData[1] + " is OFF");       // --
                     }
                 break;
 
                 case "movie":
                     if(inData[0]=="ON"){
                         console.log("Switch " + inData[1] + " is ON" );
-                        theaterButton("moviePower")
+                        theaterButton("moviePower")  //                        //
                     }else if(inData[0] == "OFF"){
                         console.log("Switch " + inData[1] + " is OFF");
-                        theaterButton("moviePower")
+                        theaterButton("moviePower") //                         //
                     }
                 break;
 
                 case "play":
                     if(inData[0]=="ON"){
                         console.log("Switch " + inData[1] + " is ON" );
+                        playOn();                                                  //
                     }else if(inData[0] == "OFF"){
                         console.log("Switch " + inData[1] + " is OFF");
+                        playOff();                                                 //
                     }
                 break;
 
                 case "hdr":
                     if(inData[0]=="ON"){
                         console.log("Switch " + inData[1] + " is ON" );
+                        hdrOn();                                                   //
                     }else if(inData[0] == "OFF"){
-                        console.log("Switch " + inData[1] + " is OFF");
+                        console.log("Switch " + inData[1] + " is OFF");            // --
+
                     }
                 break;
 
                 case "hdr two":
                     if(inData[0]=="ON"){
                         console.log("Switch " + inData[1] + " is ON" );
+                        hdrTwo();                                                   //
                     }else if(inData[0] == "OFF"){
-                        console.log("Switch " + inData[1] + " is OFF");
+                        console.log("Switch " + inData[1] + " is OFF");             // --
                     }
                 break;
             }
@@ -144,26 +152,83 @@ function lightsButton(value){
 
 function theaterButton(value){
     console.log("Theater button: "+ value + " was pressed");
-    if(value == "moviePower"){
-        if(theaterState.moviePower){ // if it'son turn it off
-            theaterState.moviePower=0;
-            value = "moviePowerOff";
-            devicesTurnOff();
-            let y = document.getElementsByName( "theaterTypeGroup");  //clear out theater selection buttons
-            for (let i = 0; i < y.length; i++) {
-                theaterState[y[i].id] = 0;
+    switch (value) {
+        case "moviePower":
+            if (theaterState.moviePower) { // if it'son turn it off
+                theaterState.moviePower = 0;
+                value = "moviePowerOff";
+                devicesTurnOff();
+                let y = document.getElementsByName("theaterTypeGroup");  //clear out theater selection buttons
+                for (let i = 0; i < y.length; i++) {
+                    theaterState[y[i].id] = 0;
+                }
+                y = document.getElementsByName("theaterWatchGroup");
+                for (let i = 0; i < y.length; i++) {
+                    theaterState[y[i].id] = 0;
+                }
+            } else {
+                theaterState.moviePower = 1;
+                value = "moviePowerOn";
+                deviceStartUp();
             }
-            y = document.getElementsByName( "theaterWatchGroup");
-            for (let i = 0; i < y.length; i++) {
-                theaterState[y[i].id] = 0;
-            }
-        }
-        else{
-            theaterState.moviePower=1;
-            value = "moviePowerOn";
-            deviceStartUp();
-        }
+            break;
+
+        case "movieTypeStandard":
+            standardButton();
+            break;
+
+        case "movieTypeStandardWidescreen":
+            standardWideScreen();
+            break;
+
+        case "movieTypeBW":
+            standardBlackAndWhite();
+            break;
+
+        case "movieTypeHDR":
+            hdrOn();
+            break;
+
+        case "movieTypeHDRTwo":
+            hdrTwo();
+            break;
+
+        case "movieWatchOppo":
+            watchOppo();
+            break;
+
+        case "movieWatchShield":
+            watchSheild();
+            break;
+
+        case "movieWatchPanasonic":
+            watchPanny();
+            break;
     }
+
+
+
+
+    // if(value == "moviePower"){
+    //     if(theaterState.moviePower){ // if it'son turn it off
+    //         theaterState.moviePower=0;
+    //         value = "moviePowerOff";
+    //         devicesTurnOff();
+    //         let y = document.getElementsByName( "theaterTypeGroup");  //clear out theater selection buttons
+    //         for (let i = 0; i < y.length; i++) {
+    //             theaterState[y[i].id] = 0;
+    //         }
+    //         y = document.getElementsByName( "theaterWatchGroup");
+    //         for (let i = 0; i < y.length; i++) {
+    //             theaterState[y[i].id] = 0;
+    //         }
+    //     }
+    //     else{
+    //         theaterState.moviePower=1;
+    //         value = "moviePowerOn";
+    //         deviceStartUp();
+    //     }
+    // }
     buttonPressStates(value);
 }
 
@@ -276,4 +341,67 @@ function devicesTurnOff(){
     oppoButton("oppoPower") ;
     denonButton("denonPower");
     jvcButton("jvcPower") /////  disabled while testing
+}
+
+function standardButton(){
+    // denon bluray, oppo hdmi, jvc standrd, normal, curtain 16x9
+    denonButton("denonInputBluray");
+    oppoButton("oppoInputHdmi");
+    jvcButton("jvcPictureMode1");
+    jvcButton("jvcLensMemory2");
+    curtainButton("curtain16_9");
+}
+
+function standardWideScreen(){
+    // denon bluray, oppo hdmi, jvc standrd, widewcreen, curtain 235
+    denonButton("denonInputBluray");
+    oppoButton("oppoInputHdmi");
+    jvcButton("jvcPictureMode1");
+    jvcButton("jvcLensMemory1");
+    curtainButton("curtain235");
+}
+
+function standardBlackAndWhite(){
+    // denon bluray, oppo hdmi, jvc standrd, widewcreen, curtain 235
+    denonButton("denonInputBluray");
+    oppoButton("oppoInputHdmi");
+    jvcButton("jvcPictureMode2");
+    jvcButton("jvcLensMemory2");
+    curtainButton("curtain4_3");
+}
+function playOn(){
+    lightsButton("lightsOff");
+}
+function playOff(){
+    lightsButton("lightsPause");
+}
+
+function hdrOn(){
+    denonButton("denonInputBluray");
+    oppoButton("oppoInputHdmi");
+    jvcButton("jvcPictureMode3");
+    jvcButton("jvcLensMemory1");
+    curtainButton("curtain235");
+}
+
+function hdrTwo(){
+    denonButton("denonInputDVD");
+    oppoButton("oppoInputHdmi");
+    jvcButton("jvcPictureMode4");
+    jvcButton("jvcLensMemory1");
+    curtainButton("curtain235");
+}
+
+function watchOppo(){
+    oppoButton("oppoInputBluray");
+    denonButton("denonInputBluray");
+}
+
+function watchSheild(){
+    oppoButton("oppoInputHdmi");
+    denonButton("denonInputBluray");
+}
+
+function watchPanny(){
+    denonButton("denonInputDVD");
 }
