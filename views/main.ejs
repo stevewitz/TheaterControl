@@ -3,7 +3,7 @@
 <script src= "/javascripts/main.js"></script>
 <link rel="stylesheet" href="./stylesheets/main.css">
 
-<html>
+<html lang="en" >
 <head>
     <meta charset = "UTF-8">
     <title>   Wiz Theater Control  </title>
@@ -20,7 +20,7 @@
 
 
         <div id="name">
-            <img id="logo" src = "/images/logo.png" >
+            <img id="logo" src = "/images/logo.png" alt ="" >
             <p id = projectName>  P & S Theater Control </p>
         </div>
 
@@ -35,15 +35,16 @@
             <div class = 'heading'>THEATER</div>
             <button class= "theater device" id = "moviePower" name = theaterButtonGroup onclick="theaterButton('moviePower')">Movie Power</button>
             <br>
-            <button class= "theater buttonGroup1" id = "movieWatchOppo" name = theaterWatchGroup onclick="theaterButton('movieWatchOppo')">OPPO</button>
-            <button class= "theater buttonGroup1" id = "movieWatchShield" name = theaterWatchGroup onclick="theaterButton('movieWatchShield')">SHIELD</button>
-            <button class= "theater buttonGroup1" id = "movieWatchPanasonic" name = theaterWatchGroup onclick="theaterButton('movieWatchPanasonic')">PANANY</button>
-            <br>
             <button class= "theater buttonGroup1" id = "movieTypeStandard" name = theaterTypeGroup onclick="theaterButton('movieTypeStandard')">STANDARD</button>
             <button class= "theater buttonGroup1" id = "movieTypeStandardWidescreen" name = theaterTypeGroup onclick="theaterButton('movieTypeStandardWidescreen')">STANDARD WIDESCREEN</button>
             <button class= "theater buttonGroup1 " id = "movieTypeBW" name = theaterTypeGroup onclick="theaterButton('movieTypeBW')">B&W</button>
             <button class= "theater buttonGroup1 " id = "movieTypeHDR" name = theaterTypeGroup onclick="theaterButton('movieTypeHDR')">HDR</button>
             <button class= "theater buttonGroup1 " id = "movieTypeHDRTwo" name = theaterTypeGroup onclick="theaterButton('movieTypeHDRTwo')">HDR TWO</button>
+            <br>
+            <button class= "theater buttonGroup1" id = "movieWatchOppo" name = theaterWatchGroup onclick="theaterButton('movieWatchOppo')">OPPO</button>
+            <button class= "theater buttonGroup1" id = "movieWatchShield" name = theaterWatchGroup onclick="theaterButton('movieWatchShield')">SHIELD</button>
+            <button class= "theater buttonGroup1" id = "movieWatchPanasonic" name = theaterWatchGroup onclick="theaterButton('movieWatchPanasonic')">PANANY</button>
+
 
 
 
@@ -113,17 +114,17 @@
         </div>
         <br>
         <div class="textDiv" id = "outputs">
-            <label for=""webcoreOutput>Webcore</label>
+            <label for="webcoreOutput">Webcore</label>
             <textarea class = "output" id="webcoreOutput"></textarea>
-            <label for=""denonOutput>Denon</label>
+            <label for="denonOutput">Denon</label>
             <textarea class = "output" id="denonOutput"></textarea>
             <br>
-            <label for=""oppoOutput>Oppo</label>
-            <textarea type="text"  class = "output" id="oppoOutput"></textarea>
-            <label for=""jvcOutput>JVC</label>
+            <label for="oppoOutput">Oppo</label>
+            <textarea class = "output" id="oppoOutput"></textarea>
+            <label for="jvcOutput">JVC</label>
             <textarea class = "output" id="jvcOutput"></textarea>
             <br>
-            <label for=""controllerOutput>Controller</label>
+            <label for="controllerOutput">Controller</label>
             <textarea class = "output" id="controllerOutput"></textarea>
 
 
