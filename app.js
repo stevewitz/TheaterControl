@@ -15,7 +15,8 @@ let port;
 const Readline = SerialPort.parsers.Readline;
 const parser = new Readline({delimiter: '\r\n'});
 let os = require('os');
-
+const childProcess = require('child_process');
+var browser;
 const bodyParser = require('body-parser');
 const urlencodedParser = bodyParser.text({extended: false});
 
@@ -51,7 +52,12 @@ let theaterState={
   denonVolumeDown:0,
   moviePower:0
 };
-
+//start browser
+if(os.platform()=='linux') {
+  browser = childProcess.exec('DISPLAY=:0 chromium-browser  http://localhost:9999/', function () {
+    console.log('started browser');
+  });
+}
 
 //setup serialport
 try {
