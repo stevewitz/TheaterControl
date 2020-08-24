@@ -241,14 +241,17 @@ function processButtonPress(button) {
       break;
     case "jvcPowerOn":
       jvc.send(jvc.jvcCommands.jvcPowerOn);
+      setTimeout(function(){jvc.send(jvc.jvcCommands.jvcPowerStatus)},2000);
       break;
     case "jvcPowerOff":
       jvc.send(jvc.jvcCommands.jvcPowerOff);
       break;
     case "jvcLensMemory1":
       jvc.send(jvc.jvcCommands.jvcLensMemory1);
+      jvc.send(jvc.jvcCommands.jvcLensMemory1);
       break;
     case "jvcLensMemory2":
+      jvc.send(jvc.jvcCommands.jvcLensMemory2);
       jvc.send(jvc.jvcCommands.jvcLensMemory2);
       break;
     case "jvcLensMemory3":
