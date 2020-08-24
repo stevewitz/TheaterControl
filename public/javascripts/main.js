@@ -341,7 +341,7 @@ function devicesTurnOff(){
     oppoButton("oppoPower") ;
     denonButton("denonPower");
     jvcButton("jvcPower") /////  disabled while testing
-    lightsButton("lightsOff");
+
 }
 
 function standardButton(){
@@ -357,18 +357,20 @@ function standardWideScreen(){
     // denon bluray, oppo hdmi, jvc standrd, widewcreen, curtain 235
     denonButton("denonInputBluray");
     oppoButton("oppoInputHdmi");
-    jvcButton("jvcPictureMode1");
-    jvcButton("jvcLensMemory1");
     curtainButton("curtain235");
+    setTimeout(function(){ jvcButton("jvcPictureMode1");}, 1000);
+    setTimeout(function(){ jvcButton("jvcLensMemory1");}, 3000);
+
 }
 
 function standardBlackAndWhite(){
     // denon bluray, oppo hdmi, jvc standrd, widewcreen, curtain 235
     denonButton("denonInputBluray");
-    oppoButton("oppoInputHdmi");
-    jvcButton("jvcPictureMode2");
-    jvcButton("jvcLensMemory2");
-    curtainButton("curtain4_3");
+    oppoButton("oppoInputHdmi"); curtainButton("curtain4_3");
+
+    setTimeout(function(){ jvcButton("jvcPictureMode2");}, 1000);
+    setTimeout(function(){ jvcButton("jvcLensMemory2");}, 3000);
+
 }
 function playOn(){
     lightsButton("lightsOff");
