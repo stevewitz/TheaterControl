@@ -84,7 +84,7 @@ parser.on('data', function (data) {
 
 
 })
-port.write("1");
+//port.write("1");
 app.use(express.static('public')); // set up the public directory as web accessible
 app.use(function (err, req, res, next) {
   console.error(err.stack);
