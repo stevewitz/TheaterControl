@@ -354,6 +354,7 @@ function devicesTurnOff(){
     oppoButton("oppoPower") ;
     denonButton("denonPower");
     jvcButton("jvcPower") /////  disabled while testing
+    curtainButton("curtainClose");
 
 }
 
