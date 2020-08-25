@@ -108,6 +108,19 @@ ws.addEventListener("message", (data) => {
                         console.log("Switch " + inData[1] + " is OFF");             // --
                     }
                 break;
+
+                case "theater":
+                    if(inData[0]=="ON"){
+                        console.log("Switch " + inData[1] + " is ON" );
+                        curtainButton("curtain235");                                               //
+                        lightsButton("loghtsOn");
+                    }else if(inData[0] == "OFF"){
+                        console.log("Switch " + inData[1] + " is OFF");             // --
+                        curtainButton("curtainClose");                                               //
+                        lightsButton("lightsOff");
+
+                    }
+                    break;
             }
         break;
 
@@ -349,7 +362,7 @@ function standardButton(){
     denonButton("denonInputBluray");
     oppoButton("oppoInputHdmi");
     jvcButton("jvcPictureMode1");
-    jvcButton("jvcLensMemory2");
+    setTimeout(function(){ jvcButton("jvcLensMemory2");}, 9000);
     curtainButton("curtain16_9");
 }
 
@@ -359,7 +372,7 @@ function standardWideScreen(){
     oppoButton("oppoInputHdmi");
     curtainButton("curtain235");
     setTimeout(function(){ jvcButton("jvcPictureMode1");}, 1000);
-    setTimeout(function(){ jvcButton("jvcLensMemory1");}, 3000);
+    setTimeout(function(){ jvcButton("1");}, 9000);
 
 }
 
@@ -369,7 +382,7 @@ function standardBlackAndWhite(){
     oppoButton("oppoInputHdmi"); curtainButton("curtain4_3");
 
     setTimeout(function(){ jvcButton("jvcPictureMode2");}, 1000);
-    setTimeout(function(){ jvcButton("jvcLensMemory2");}, 3000);
+    setTimeout(function(){ jvcButton("jvcLensMemory2");}, 9000);
 
 }
 function playOn(){
@@ -383,7 +396,7 @@ function hdrOn(){
     denonButton("denonInputBluray");
     oppoButton("oppoInputHdmi");
     jvcButton("jvcPictureMode3");
-    jvcButton("jvcLensMemory1");
+    setTimeout(function(){ jvcButton("jvcLensMemory1");}, 9000);
     curtainButton("curtain235");
 }
 
@@ -391,8 +404,9 @@ function hdrTwo(){
     denonButton("denonInputDVD");
     oppoButton("oppoInputHdmi");
     jvcButton("jvcPictureMode4");
-    jvcButton("jvcLensMemory1");
+
     curtainButton("curtain235");
+    setTimeout(function(){ jvcButton("jvcLensMemory1");}, 9000);
 }
 
 function watchOppo(){
