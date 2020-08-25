@@ -372,7 +372,7 @@ function standardWideScreen(){
     oppoButton("oppoInputHdmi");
     curtainButton("curtain235");
     setTimeout(function(){ jvcButton("jvcPictureMode1");}, 1000);
-    setTimeout(function(){ jvcButton("1");}, 9000);
+    setTimeout(function(){ jvcButton("jvcLensMemory1");}, 9000);
 
 }
 
