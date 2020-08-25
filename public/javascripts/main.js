@@ -112,8 +112,8 @@ ws.addEventListener("message", (data) => {
                 case "theater":
                     if(inData[0]=="ON"){
                         console.log("Switch " + inData[1] + " is ON" );
-                        curtainButton("curtain235");                                               //
-                        lightsButton("loghtsOn");
+                      //  curtainButton("curtain235");                                               //
+                        lightsButton("lightsOn");
                     }else if(inData[0] == "OFF"){
                         console.log("Switch " + inData[1] + " is OFF");             // --
                         curtainButton("curtainClose");                                               //
