@@ -352,8 +352,11 @@ function deviceStartUp(){// turn on and set up all initial inputs
 
 function devicesTurnOff(){
     oppoButton("oppoPower") ;
-    denonButton("denonPower");
-    jvcButton("jvcPower") /////  disabled while testing
+    setTimeout(function(){ denonButton("denonPower");}, 500);
+    setTimeout(function(){ jvcButton("jvcPower");}, 1500);
+
+  //  denonButton("denonPower");
+  //  jvcButton("jvcPower") /////  disabled while testing
     curtainButton("curtainClose");
 
 }
