@@ -272,6 +272,16 @@ function jvcButton(value){
             value = "jvcPowerOn";
         }
     }
+    if(value == "jvcPowerOff"){
+       // if(theaterState.jvcPower){ // if it'son turn it off
+            theaterState.jvcPower=0;
+            value = "jvcPowerOff";
+       // }
+       // else{
+      //      theaterState.jvcPower=1;
+       //     value = "jvcPowerOn";
+       // }
+    }
     buttonPressStates(value);
 }
 
@@ -351,9 +361,10 @@ function deviceStartUp(){// turn on and set up all initial inputs
 }
 
 function devicesTurnOff(){
+    jvcButton("jvcPowerOff");
     oppoButton("oppoPower") ;
     setTimeout(function(){ denonButton("denonPower");}, 500);
-    setTimeout(function(){ jvcButton("jvcPowerOff");}, 1500);
+    setTimeout(function(){ jvcButton("jvcPowerOff");}, 1000);
 
   //  denonButton("denonPower");
   //  jvcButton("jvcPower") /////  disabled while testing
