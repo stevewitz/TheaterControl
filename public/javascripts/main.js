@@ -394,7 +394,8 @@ function standardWideScreen(){
 function standardBlackAndWhite(){
     // denon bluray, oppo hdmi, jvc standrd, widewcreen, curtain 235
   //  denonButton("denonInputBluray");
-    oppoButton("oppoInputHdmi"); curtainButton("curtain4_3");
+ //   oppoButton("oppoInputHdmi");
+    curtainButton("curtain4_3");
 
     setTimeout(function(){ jvcButton("jvcPictureMode2");}, 1000);
     setTimeout(function(){ jvcButton("jvcLensMemory2");}, 9000);

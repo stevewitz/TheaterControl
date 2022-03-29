@@ -17,7 +17,7 @@ const HOST = '192.168.2.110'
          switch (sdata) {
              case 'PJ_OK' :
                  console.log('PJ_OK received - sending PJREQ');
-                 client.write('PJREQ'); // need to add password here for new projector
+                 client.write('PJREQ_1234567890'); // need to add password here for new projector
              break;
 
              case 'PJACK' :
