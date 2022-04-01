@@ -375,8 +375,8 @@ function devicesTurnOff(){
 function standardButton(){
     // denon bluray, oppo hdmi, jvc standrd, normal, curtain 16x9
  //   denonButton("denonInputBluray");
-    oppoButton("oppoInputHdmi");
-    jvcButton("jvcPictureMode1");
+ //   oppoButton("oppoInputHdmi");
+ //   jvcButton("jvcPictureMode1");
     setTimeout(function(){ jvcButton("jvcLensMemory2");}, 9000);
     curtainButton("curtain16_9");
 }
@@ -384,7 +384,7 @@ function standardButton(){
 function standardWideScreen(){
     // denon bluray, oppo hdmi, jvc standrd, widewcreen, curtain 235
   //  denonButton("denonInputBluray");
-    oppoButton("oppoInputHdmi");
+ //   oppoButton("oppoInputHdmi");
     curtainButton("curtain235");
     setTimeout(function(){ jvcButton("jvcPictureMode1");}, 1000);
     setTimeout(function(){ jvcButton("jvcLensMemory1");}, 9000);
@@ -410,8 +410,8 @@ function playOff(){
 
 function hdrOn(){
  //   denonButton("denonInputBluray");
-    oppoButton("oppoInputHdmi");
-    jvcButton("jvcPictureMode3");
+ //   oppoButton("oppoInputHdmi");
+ //   jvcButton("jvcPictureMode3");
     setTimeout(function(){ jvcButton("jvcLensMemory1");}, 9000);
     curtainButton("curtain235");
 }
@@ -419,7 +419,7 @@ function hdrOn(){
 function hdrTwo(){
     denonButton("denonInputDVD");
     oppoButton("oppoInputHdmi");
-    jvcButton("jvcPictureMode4");
+ //   jvcButton("jvcPictureMode4");
 
     curtainButton("curtain235");
     setTimeout(function(){ jvcButton("jvcLensMemory1");}, 9000);
