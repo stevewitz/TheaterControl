@@ -354,8 +354,8 @@ function deviceStartUp(){// turn on and set up all initial inputs
    setTimeout(function(){ denonButton("denonZone3Off");}, 7500);
    setTimeout(function(){ denonButton("denonZone2Off");}, 10500);
    setTimeout(function(){ jvcButton("jvcLensMemory2");}, 120000);
-   setTimeout(function(){ jvcButton("jvcPictureMode1");}, 130000);
-   setTimeout(function(){ jvcButton("jvcCMD1");}, 140000);
+  // setTimeout(function(){ jvcButton("jvcPictureMode1");}, 130000); // for new projector NZ8
+  // setTimeout(function(){ jvcButton("jvcCMD1");}, 140000);
 
 
 }
@@ -386,8 +386,8 @@ function standardWideScreen(){
   //  denonButton("denonInputBluray");
  //   oppoButton("oppoInputHdmi");
     curtainButton("curtain235");
-    setTimeout(function(){ jvcButton("jvcPictureMode1");}, 1000);
-    setTimeout(function(){ jvcButton("jvcLensMemory1");}, 9000);
+//    setTimeout(function(){ jvcButton("jvcPictureMode1");}, 1000);// for new projector NZ8
+    setTimeout(function(){ jvcButton("jvcLensMemory1");}, 2000);
 
 }
 
@@ -397,8 +397,8 @@ function standardBlackAndWhite(){
  //   oppoButton("oppoInputHdmi");
     curtainButton("curtain4_3");
 
-    setTimeout(function(){ jvcButton("jvcPictureMode2");}, 1000);
-    setTimeout(function(){ jvcButton("jvcLensMemory2");}, 9000);
+  //  setTimeout(function(){ jvcButton("jvcPictureMode2");}, 1000);
+    setTimeout(function(){ jvcButton("jvcLensMemory2");}, 2000);
 
 }
 function playOn(){
@@ -412,7 +412,7 @@ function hdrOn(){
  //   denonButton("denonInputBluray");
  //   oppoButton("oppoInputHdmi");
  //   jvcButton("jvcPictureMode3");
-    setTimeout(function(){ jvcButton("jvcLensMemory1");}, 9000);
+    setTimeout(function(){ jvcButton("jvcLensMemory1");}, 2000);
     curtainButton("curtain235");
 }
 
@@ -422,7 +422,7 @@ function hdrTwo(){
  //   jvcButton("jvcPictureMode4");
 
     curtainButton("curtain235");
-    setTimeout(function(){ jvcButton("jvcLensMemory1");}, 9000);
+    setTimeout(function(){ jvcButton("jvcLensMemory1");}, 2000);
 }
 
 function watchOppo(){
