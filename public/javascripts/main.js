@@ -349,7 +349,7 @@ function deviceStartUp(){// turn on and set up all initial inputs
    lightsButton("lightsOn");
 
    jvcButton("jvcPower") /////  disabled while testing
-   setTimeout(function(){ oppoButton("oppoInputHdmi");}, 5000);
+   setTimeout(function(){ oppoButton("oppoInputBluray");}, 5000);
    setTimeout(function(){ denonButton("denonInputBluray");}, 5510);
    setTimeout(function(){ denonButton("denonZone3Off");}, 7500);
    setTimeout(function(){ denonButton("denonZone2Off");}, 10500);
