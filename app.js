@@ -309,7 +309,7 @@ function processButtonPress(button) {
     case "denonInputDVD":
       denon.send(denon.denonCommands.denonInputDVD);
       break;
-    case "denonInputTV":
+    case "denonInputTV": // actually is now sat/cable where fire tv is plugged into
       denon.send(denon.denonCommands.denonInputTV);
       break;
 

@@ -29,7 +29,7 @@ module.exports.denonCommands={
     denonPowerStatus:'PW?',
     denonInputBluray:'SIBD',
     denonInputDVD:'SIDVD',
-    denonInputTV:'SITV',
+    denonInputTV:'SISAT/CBL',  //changed to sat/cable
     denonZone3Off:'Z3OFF',
     denonZone2Off:'Z2OFF',
     denonVolumeUp:'MVUP',

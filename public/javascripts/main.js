@@ -350,7 +350,7 @@ function deviceStartUp(){// turn on and set up all initial inputs
 
    jvcButton("jvcPower") /////  disabled while testing
    setTimeout(function(){ oppoButton("oppoInputBluray");}, 5000);
-   setTimeout(function(){ denonButton("denonInputBluray");}, 5510);
+   setTimeout(function(){ denonButton("denonInputTV");}, 5510); //changed to FIRESTICK
    setTimeout(function(){ denonButton("denonZone3Off");}, 7500);
    setTimeout(function(){ denonButton("denonZone2Off");}, 10500);
    setTimeout(function(){ jvcButton("jvcLensMemory2");}, 120000);
